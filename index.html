@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Holiday Wishlist 🎄 (Test Mode)</title>
+    <title>Family Holiday Wishlist 🎄 (Visual Test Mode)</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #04060a;
+            --bg-dark: #030509;
             --accent-gold: #fde047;
             --primary-red: #991b1b;
         }
@@ -24,9 +24,10 @@
         body {
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(circle at 80% 25%, rgba(251, 191, 36, 0.25) 0%, transparent 45%),
-                radial-gradient(circle at 20% 75%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
-                linear-gradient(rgba(4, 6, 10, 0.55), rgba(4, 6, 10, 0.85)), 
+                radial-gradient(circle at 10% 30%, rgba(251, 191, 36, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at 90% 40%, rgba(251, 191, 36, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at 15% 75%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
+                linear-gradient(rgba(3, 5, 9, 0.65), rgba(3, 5, 9, 0.85)), 
                 url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -37,35 +38,92 @@
             flex-direction: column;
             position: relative;
             overflow-x: hidden;
+            animation: candlelightFlicker 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes candlelightFlicker {
+            0% { filter: brightness(0.95); }
+            50% { filter: brightness(1.04); }
+            100% { filter: brightness(0.98); }
+        }
+
+        /* Ambient floating candle overlay effects */
+        .magical-candles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .candle {
+            position: absolute;
+            font-size: 2.5rem;
+            filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.7));
+            animation: candleFloat 6s ease-in-out infinite alternate;
+        }
+        .candle-1 { top: 120px; left: 80px; animation-delay: 0s; }
+        .candle-2 { top: 220px; left: 40px; animation-delay: 1.5s; font-size: 2rem; }
+        .candle-3 { top: 260px; left: 120px; animation-delay: 0.5s; font-size: 1.8rem; }
+        .candle-4 { top: 150px; right: 80px; animation-delay: 1s; }
+        .candle-5 { top: 280px; right: 40px; animation-delay: 2s; font-size: 2rem; }
+
+        @keyframes candleFloat {
+            0% { transform: translateY(0px) rotate(-1deg); filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.6)); }
+            100% { transform: translateY(-15px) rotate(1deg); filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.85)); }
+        }
+
+        /* Ambient glowing fire spark particles */
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(circle, #f59e0b 1px, transparent 1.5px),
+                radial-gradient(circle, #fbbf24 1.5px, transparent 2px);
+            background-size: 100px 100px, 150px 150px;
+            opacity: 0.35;
+            animation: sparkFloat 20s linear infinite;
+        }
+
+        @keyframes sparkFloat {
+            0% { background-position: 0 0, 0 0; }
+            100% { background-position: 50px -1000px, -50px -500px; }
         }
 
         /* Glowing Ethereal Patronus Stag Effect */
         .patronus-stag {
             position: fixed;
-            top: 40px;
-            right: 60px;
-            font-size: 3.8rem;
-            color: #bae6fd;
-            text-shadow: 0 0 25px #3b82f6, 0 0 50px #93c5fd;
+            top: 30px;
+            right: 40px;
+            font-size: 4rem;
+            color: #e0f2fe;
+            filter: drop-shadow(0 0 15px #3b82f6) drop-shadow(0 0 35px #60a5fa);
             pointer-events: none;
             z-index: 11;
-            opacity: 0.85;
+            opacity: 0.9;
             animation: floatStag 5s ease-in-out infinite alternate;
         }
 
         @keyframes floatStag {
-            0% { transform: translateY(0px) scale(1); opacity: 0.7; }
-            100% { transform: translateY(-10px) scale(1.06); opacity: 0.95; }
+            0% { transform: translateY(0px) scale(1) rotate(-1deg); opacity: 0.75; }
+            100% { transform: translateY(-12px) scale(1.06) rotate(1deg); opacity: 0.95; }
         }
 
         header {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(20, 27, 45, 0.95));
+            background: linear-gradient(135deg, rgba(10, 16, 30, 0.95), rgba(18, 25, 42, 0.95));
             border-bottom: 3px solid #b45309;
             padding: 1.5rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             box-shadow: 0 6px 25px rgba(0,0,0,0.85);
+            position: relative;
+            z-index: 5;
         }
 
         .brand {
@@ -90,7 +148,7 @@
             font-size: 2.6rem;
             color: var(--accent-gold);
             letter-spacing: 1px;
-            text-shadow: 0 0 15px rgba(253, 224, 71, 0.8), 0 0 30px rgba(217, 119, 6, 0.6);
+            text-shadow: 0 0 15px rgba(253, 224, 71, 0.85), 0 0 30px rgba(217, 119, 6, 0.6);
         }
 
         header p {
@@ -104,37 +162,50 @@
             width: 100%;
             margin: 2rem auto;
             padding: 0 1.5rem;
+            position: relative;
+            z-index: 5;
         }
 
-        /* Authentic Weathered Photographic Parchment Cards */
+        /* 
+          Hand-drawn Jagged Edge & Weathered Parchment Boxes
+          We create natural non-uniform border radius and double frames 
+          to match the photorealistic old scroll card look from the image.
+        */
         .login-card, .wishlist-view, .dashboard-header, .profile-card, .item-card {
-            background-color: #120d08 !important;
+            background-color: #1e160e !important;
             background-image: 
-                linear-gradient(rgba(10, 7, 4, 0.85), rgba(15, 11, 7, 0.92)),
-                url('https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=800&auto=format&fit=crop') !important;
+                linear-gradient(rgba(14, 11, 7, 0.82), rgba(18, 14, 10, 0.88)),
+                url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop') !important;
             background-size: cover;
             background-blend-mode: overlay;
-            border: 5px solid #78350f !important;
-            border-radius: 18px;
-            box-shadow: 0 0 40px rgba(217, 119, 6, 0.4), inset 0 0 60px rgba(0, 0, 0, 0.95) !important;
+            
+            /* SAsymmetrical warped border to give natural hand-cut edges */
+            border-radius: 255px 25px 225px 35px/35px 225px 25px 255px !important;
+            border: 4px solid #854d0e !important;
+            
+            /* Layered fiery & shadow effects to create rugged depth */
+            box-shadow: 
+                0 0 35px rgba(217, 119, 6, 0.45), 
+                inset 0 0 45px rgba(0, 0, 0, 0.95),
+                0 10px 25px rgba(0, 0, 0, 0.8) !important;
             color: #f8fafc !important;
+            position: relative;
         }
 
-        /* Login Card Specifics */
         .login-card {
-            max-width: 480px;
+            max-width: 500px;
             margin: 4rem auto;
-            padding: 3rem 2.5rem;
+            padding: 3.5rem 2.8rem;
             text-align: center;
             border-top: 8px solid var(--accent-gold) !important;
         }
 
         .login-card h2 {
             font-family: 'Mountains of Christmas', cursive;
-            font-size: 2.8rem;
+            font-size: 3rem;
             color: var(--accent-gold);
-            margin-bottom: 0.5rem;
-            text-shadow: 0 0 15px rgba(253, 224, 71, 0.8);
+            margin-bottom: 0.75rem;
+            text-shadow: 0 0 15px rgba(253, 224, 71, 0.85);
         }
 
         .form-group {
@@ -150,17 +221,18 @@
             color: #f8fafc;
         }
 
+        /* Smooth inputs to contrast dark hollow areas */
         select, input {
             width: 100%;
-            padding: 0.85rem;
-            background: rgba(4, 6, 10, 0.98) !important;
-            border: 2px solid #b45309 !important;
-            border-radius: 8px;
+            padding: 0.9rem;
+            background: rgba(4, 5, 8, 0.95) !important;
+            border: 3px solid #78350f !important;
+            border-radius: 12px/8px !important;
             color: #f8fafc !important;
             font-size: 1rem;
             outline: none;
             box-shadow: inset 0 4px 10px rgba(0,0,0,0.95);
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
         select:focus, input:focus {
@@ -168,31 +240,42 @@
             box-shadow: 0 0 18px rgba(253, 224, 71, 0.8), inset 0 4px 10px rgba(0,0,0,0.95);
         }
 
-        /* Carved Wooden Artifact Buttons */
+        /* 
+          Magical Carved Wood & Gold-Foil Embossed Buttons
+          Crafted to look like ancient plates in deep shadows.
+        */
         .action-btn, .edit-item, .delete-item, .claim-btn, .logout-btn, .back-btn {
-            background: linear-gradient(135deg, #1c130b, #2f2010) !important;
-            border: 2px solid #d97706 !important;
-            border-radius: 8px;
-            color: #fde047 !important;
+            background: 
+                linear-gradient(rgba(20, 12, 6, 0.8), rgba(12, 6, 2, 0.95)),
+                url('https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=300&auto=format&fit=crop') !important;
+            background-size: cover;
+            background-blend-mode: multiply;
+            
+            border: 3px solid #d97706 !important;
+            border-radius: 12px 6px 14px 4px/6px 12px 4px 14px !important;
+            color: var(--accent-gold) !important;
             font-family: 'Mountains of Christmas', cursive !important;
-            font-size: 1.25rem !important;
-            padding: 0.6rem 1.2rem;
+            font-size: 1.3rem !important;
+            font-weight: bold;
+            padding: 0.6rem 1.4rem;
             letter-spacing: 0.5px;
-            box-shadow: 0 0 15px rgba(217, 119, 6, 0.5), inset 0 0 12px rgba(0, 0, 0, 0.95) !important;
+            box-shadow: 
+                0 0 15px rgba(217, 119, 6, 0.5), 
+                inset 0 0 10px rgba(0, 0, 0, 0.95),
+                0 4px 8px rgba(0,0,0,0.6) !important;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .action-btn {
             width: 100%;
-            padding: 0.9rem;
-            font-size: 1.45rem !important;
+            padding: 0.95rem;
+            font-size: 1.5rem !important;
         }
 
         .action-btn:hover, .edit-item:hover, .claim-btn:hover, .logout-btn:hover, .back-btn:hover {
             border-color: #fde047 !important;
-            background: linear-gradient(135deg, #2f2010, #422e18) !important;
-            box-shadow: 0 0 22px rgba(253, 224, 71, 0.8), inset 0 0 12px rgba(0, 0, 0, 0.85) !important;
+            box-shadow: 0 0 24px rgba(253, 224, 71, 0.8), inset 0 0 8px rgba(0, 0, 0, 0.8) !important;
             transform: translateY(-1px);
         }
 
@@ -207,7 +290,7 @@
             box-shadow: 0 0 20px rgba(239, 68, 68, 0.8), inset 0 0 10px rgba(0,0,0,0.85) !important;
         }
 
-        /* Dashboard & Views */
+        /* Dashboard & List Views */
         .dashboard-header {
             display: flex;
             justify-content: space-between;
@@ -225,7 +308,7 @@
 
         .section-title {
             font-family: 'Mountains of Christmas', cursive;
-            font-size: 2.1rem;
+            font-size: 2.2rem;
             color: var(--accent-gold);
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
@@ -343,19 +426,24 @@
             }
         }
 
-        .loading-overlay {
-            text-align: center;
-            padding: 3rem;
-            font-style: italic;
-            color: #cbd5e1;
-        }
-
         .hidden {
             display: none !important;
         }
     </style>
 </head>
 <body>
+
+    <!-- Sparkling Golden Ambient Particles -->
+    <div class="sparkles"></div>
+
+    <!-- 3D floating and glowing magical candles -->
+    <div class="magical-candles">
+        <span class="candle candle-1">🕯️</span>
+        <span class="candle candle-2">🕯️</span>
+        <span class="candle candle-3">🕯️</span>
+        <span class="candle candle-4">🕯️</span>
+        <span class="candle candle-5">🕯️</span>
+    </div>
 
     <!-- Glowing Patronus Spirit Animal -->
     <div class="patronus-stag">🦌</div>
@@ -365,17 +453,12 @@
             <div class="brand-icon">🎄</div>
             <div>
                 <h1>Family Holiday Wishlist</h1>
-                <p>Offline Test Mode (Zero API Usage)</p>
+                <p>Offline Test Mode (Zero Cloud API Usage)</p>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- LOADING SCREEN (Instantly hidden in test mode) -->
-        <div id="loadingScreen" class="loading-overlay hidden">
-            Loading test data... 🎄
-        </div>
-
         <!-- LOGIN SCREEN WITH DROPDOWN -->
         <section id="loginScreen" class="login-card">
             <h2>Welcome Family!</h2>
@@ -455,7 +538,7 @@
     </main>
 
     <script>
-        // LOCAL MOCK DATA (Zero Cloud API Calls Required for Testing)
+        // LOCAL MOCK DATA (Zero Cloud API Calls Required)
         let familyData = {
             members: [
                 {
@@ -495,17 +578,7 @@
             return '🧑';
         }
 
-        // Mock fetch that runs instantly locally
-        function fetchCloudData() {
-            initApp();
-        }
-
-        // Mock save that updates local memory only
-        function saveCloudData() {
-            // Local state updated directly, no network calls made!
-            return Promise.resolve();
-        }
-
+        // Initialize directly from local memory
         function initApp() {
             const select = document.getElementById('userSelect');
             select.innerHTML = '<option value="">-- Choose your name --</option>';
@@ -517,7 +590,7 @@
             });
         }
 
-        async function login() {
+        function login() {
             const selectVal = document.getElementById('userSelect').value;
             if (!selectVal) {
                 alert("Please select your name to log in.");
@@ -589,7 +662,7 @@
             });
         }
 
-        async function addMyItem() {
+        function addMyItem() {
             const titleInput = document.getElementById('newItemTitle');
             const linkInput = document.getElementById('newItemLink');
             const notesInput = document.getElementById('newItemNotes');
@@ -620,7 +693,7 @@
             notesInput.value = '';
         }
 
-        async function editMyItem(itemId) {
+        function editMyItem(itemId) {
             const item = currentUser.items.find(i => i.id === itemId);
             if (!item) return;
 
@@ -641,7 +714,7 @@
             renderDashboard();
         }
 
-        async function deleteMyItem(itemId) {
+        function deleteMyItem(itemId) {
             if (!confirm("Are you sure you want to remove this item?")) return;
 
             currentUser.items = currentUser.items.filter(i => i.id !== itemId);
@@ -798,8 +871,7 @@
             return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
 
-        // Initialize with local mock data immediately
-        fetchCloudData();
+        initApp();
     </script>
 </body>
 </html>

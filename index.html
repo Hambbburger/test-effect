@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Family Holiday Wishlist 🎄 (Visual Test Mode)</title>
+    <title>Family Holiday Wishlist 🎄 (Test Mode)</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>">
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #030509;
+            --bg-dark: #05070e;
             --accent-gold: #fde047;
+            --gold-trim: #d97706;
             --primary-red: #991b1b;
+            --parchment-light: #d6c3a5;
+            --parchment-dark: #2a1f16;
         }
 
         * {
@@ -20,14 +23,13 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Cinematic Warm Candlelit & Magical Castle Atmosphere */
         body {
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(circle at 10% 30%, rgba(251, 191, 36, 0.25) 0%, transparent 40%),
-                radial-gradient(circle at 90% 40%, rgba(251, 191, 36, 0.25) 0%, transparent 40%),
-                radial-gradient(circle at 15% 75%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
-                linear-gradient(rgba(3, 5, 9, 0.65), rgba(3, 5, 9, 0.85)), 
+                radial-gradient(circle at 15% 35%, rgba(251, 191, 36, 0.22) 0%, transparent 35%),
+                radial-gradient(circle at 85% 40%, rgba(251, 191, 36, 0.22) 0%, transparent 35%),
+                radial-gradient(circle at 80% 65%, rgba(56, 189, 248, 0.15) 0%, transparent 40%),
+                linear-gradient(rgba(5, 7, 14, 0.55), rgba(5, 7, 14, 0.85)), 
                 url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -38,271 +40,344 @@
             flex-direction: column;
             position: relative;
             overflow-x: hidden;
-            animation: candlelightFlicker 8s ease-in-out infinite alternate;
         }
 
-        @keyframes candlelightFlicker {
-            0% { filter: brightness(0.95); }
-            50% { filter: brightness(1.04); }
-            100% { filter: brightness(0.98); }
-        }
-
-        /* Ambient floating candle overlay effects */
-        .magical-candles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 2;
-            overflow: hidden;
-        }
-
-        .candle {
-            position: absolute;
-            font-size: 2.5rem;
-            filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.7));
-            animation: candleFloat 6s ease-in-out infinite alternate;
-        }
-        .candle-1 { top: 120px; left: 80px; animation-delay: 0s; }
-        .candle-2 { top: 220px; left: 40px; animation-delay: 1.5s; font-size: 2rem; }
-        .candle-3 { top: 260px; left: 120px; animation-delay: 0.5s; font-size: 1.8rem; }
-        .candle-4 { top: 150px; right: 80px; animation-delay: 1s; }
-        .candle-5 { top: 280px; right: 40px; animation-delay: 2s; font-size: 2rem; }
-
-        @keyframes candleFloat {
-            0% { transform: translateY(0px) rotate(-1deg); filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.6)); }
-            100% { transform: translateY(-15px) rotate(1deg); filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.85)); }
-        }
-
-        /* Ambient glowing fire spark particles */
+        /* Ambient Floating Golden Embers */
         .sparkles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background-image: 
-                radial-gradient(circle, #f59e0b 1px, transparent 1.5px),
-                radial-gradient(circle, #fbbf24 1.5px, transparent 2px);
-            background-size: 100px 100px, 150px 150px;
-            opacity: 0.35;
-            animation: sparkFloat 20s linear infinite;
-        }
-
-        @keyframes sparkFloat {
-            0% { background-position: 0 0, 0 0; }
-            100% { background-position: 50px -1000px, -50px -500px; }
-        }
-
-        /* Glowing Ethereal Patronus Stag Effect */
-        .patronus-stag {
             position: fixed;
-            top: 30px;
-            right: 40px;
-            font-size: 4rem;
-            color: #e0f2fe;
-            filter: drop-shadow(0 0 15px #3b82f6) drop-shadow(0 0 35px #60a5fa);
+            inset: 0;
             pointer-events: none;
-            z-index: 11;
-            opacity: 0.9;
-            animation: floatStag 5s ease-in-out infinite alternate;
+            z-index: 1;
+            background-image: 
+                radial-gradient(circle, #fde047 1.5px, transparent 2.5px),
+                radial-gradient(circle, #f59e0b 1px, transparent 2px),
+                radial-gradient(circle, #fbbf24 2px, transparent 3px);
+            background-size: 120px 120px, 90px 90px, 170px 170px;
+            background-position: 0 0, 40px 60px, 80px 20px;
+            opacity: 0.45;
+            animation: sparkDrift 25s linear infinite;
         }
 
-        @keyframes floatStag {
-            0% { transform: translateY(0px) scale(1) rotate(-1deg); opacity: 0.75; }
-            100% { transform: translateY(-12px) scale(1.06) rotate(1deg); opacity: 0.95; }
+        @keyframes sparkDrift {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-250px); }
         }
 
+        /* ================= ORNATE WIZARDING HEADER BANNER ================= */
         header {
-            background: linear-gradient(135deg, rgba(10, 16, 30, 0.95), rgba(18, 25, 42, 0.95));
+            background: 
+                linear-gradient(90deg, rgba(12, 9, 6, 0.96) 0%, rgba(28, 22, 16, 0.92) 50%, rgba(12, 9, 6, 0.96) 100%),
+                url('https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1200&auto=format&fit=crop');
+            background-size: cover;
+            background-blend-mode: multiply;
             border-bottom: 3px solid #b45309;
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 3rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.85);
+            box-shadow: 
+                0 6px 30px rgba(0, 0, 0, 0.95),
+                0 2px 15px rgba(251, 191, 36, 0.35),
+                inset 0 -3px 12px rgba(217, 119, 6, 0.4);
             position: relative;
-            z-index: 5;
+            z-index: 10;
         }
+
+        /* Glowing Gold Filigree Line & Corner Flourishes on Header */
+        header::before, header::after {
+            content: "❖───═══⚜═══───❖";
+            position: absolute;
+            bottom: -11px;
+            color: #fbbf24;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #f59e0b, 0 0 20px #d97706;
+            pointer-events: none;
+        }
+        header::before { left: 2rem; }
+        header::after { right: 2rem; }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 1.15rem;
         }
 
         .brand-icon {
-            font-size: 2.2rem;
-            background: var(--primary-red);
-            padding: 0.5rem;
+            font-size: 2.1rem;
+            background: radial-gradient(circle at 30% 30%, #dc2626, #7f1d1d);
+            padding: 0.55rem;
             border-radius: 12px;
+            border: 2px solid #f59e0b;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.7), inset 0 0 10px rgba(0, 0, 0, 0.6);
         }
 
         header h1 {
             font-family: 'Mountains of Christmas', cursive;
-            font-size: 2.6rem;
-            color: var(--accent-gold);
-            letter-spacing: 1px;
-            text-shadow: 0 0 15px rgba(253, 224, 71, 0.85), 0 0 30px rgba(217, 119, 6, 0.6);
+            font-size: 2.75rem;
+            color: #fde047;
+            letter-spacing: 1.5px;
+            text-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.95),
+                0 0 14px rgba(253, 224, 71, 0.75), 
+                0 0 28px rgba(217, 119, 6, 0.55);
         }
 
         header p {
             font-size: 0.85rem;
-            color: #cbd5e1;
+            color: #e2e8f0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+            letter-spacing: 0.3px;
         }
 
+        /* Ethereal Blue Glowing Patronus Stag SVG in Header */
+        .patronus-container {
+            width: 68px;
+            height: 68px;
+            filter: drop-shadow(0 0 10px #60a5fa) drop-shadow(0 0 22px #3b82f6) drop-shadow(0 0 35px #1d4ed8);
+            opacity: 0.92;
+            animation: patronusFloat 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes patronusFloat {
+            0% { transform: translateY(2px) scale(0.98); filter: drop-shadow(0 0 8px #60a5fa) drop-shadow(0 0 18px #3b82f6); }
+            100% { transform: translateY(-4px) scale(1.04); filter: drop-shadow(0 0 14px #93c5fd) drop-shadow(0 0 28px #3b82f6); }
+        }
+
+        /* ================= MAIN CONTENT & FLOATING CANDLES ================= */
         main {
             flex: 1;
-            max-width: 1000px;
+            max-width: 980px;
             width: 100%;
-            margin: 2rem auto;
+            margin: 2.5rem auto;
             padding: 0 1.5rem;
             position: relative;
             z-index: 5;
         }
 
-        /* 
-          Hand-drawn Jagged Edge & Weathered Parchment Boxes
-          We create natural non-uniform border radius and double frames 
-          to match the photorealistic old scroll card look from the image.
-        */
-        .login-card, .wishlist-view, .dashboard-header, .profile-card, .item-card {
-            background-color: #1e160e !important;
-            background-image: 
-                linear-gradient(rgba(14, 11, 7, 0.82), rgba(18, 14, 10, 0.88)),
-                url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop') !important;
-            background-size: cover;
-            background-blend-mode: overlay;
-            
-            /* SAsymmetrical warped border to give natural hand-cut edges */
-            border-radius: 255px 25px 225px 35px/35px 225px 25px 255px !important;
-            border: 4px solid #854d0e !important;
-            
-            /* Layered fiery & shadow effects to create rugged depth */
-            box-shadow: 
-                0 0 35px rgba(217, 119, 6, 0.45), 
-                inset 0 0 45px rgba(0, 0, 0, 0.95),
-                0 10px 25px rgba(0, 0, 0, 0.8) !important;
-            color: #f8fafc !important;
+        /* Realistic CSS 3D Wax Candles */
+        .candle-cluster {
+            position: fixed;
+            pointer-events: none;
+            z-index: 3;
+        }
+        .candle-left-1 { top: 210px; left: 6%; transform: scale(0.95); }
+        .candle-left-2 { top: 340px; left: 3%; transform: scale(0.75); }
+        .candle-left-3 { top: 380px; left: 10%; transform: scale(0.65); }
+        .candle-right-1 { top: 240px; right: 7%; transform: scale(0.9); }
+        .candle-right-2 { top: 390px; right: 4%; transform: scale(0.8); }
+
+        .wax-candle {
+            width: 24px;
+            height: 95px;
+            background: linear-gradient(90deg, #d6cfc2, #f5f0e6 45%, #b8afa0);
+            border-radius: 3px 3px 2px 2px;
             position: relative;
+            box-shadow: inset 0 -10px 15px rgba(0,0,0,0.4), 0 10px 25px rgba(0,0,0,0.8);
+            animation: candleHover 5s ease-in-out infinite alternate;
         }
 
+        .wax-flame {
+            position: absolute;
+            top: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 26px;
+            background: radial-gradient(ellipse at bottom, #ffffff 15%, #fde047 50%, #f97316 85%, transparent 100%);
+            border-radius: 50% 50% 35% 35%;
+            box-shadow: 
+                0 0 15px 4px rgba(251, 191, 36, 0.85),
+                0 0 35px 12px rgba(245, 158, 11, 0.55),
+                0 0 60px 20px rgba(217, 119, 6, 0.3);
+            animation: flameFlicker 1.8s ease-in-out infinite alternate;
+        }
+
+        @keyframes candleHover {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-12px); }
+        }
+
+        @keyframes flameFlicker {
+            0% { transform: translateX(-50%) scale(0.94, 1.04) rotate(-2deg); }
+            50% { transform: translateX(-50%) scale(1.05, 0.96) rotate(2deg); }
+            100% { transform: translateX(-50%) scale(0.98, 1.02) rotate(-1deg); }
+        }
+
+        /* ================= JAGGED TORN-PARCHMENT & WOODEN BOXES ================= */
+        /* 
+           Uses the inline SVG #torn-edge filter to physically roughen 
+           the straight browser edges into organic hand-torn parchment!
+        */
         .login-card {
             max-width: 500px;
-            margin: 4rem auto;
-            padding: 3.5rem 2.8rem;
+            margin: 3.5rem auto;
+            padding: 3.2rem 2.8rem;
             text-align: center;
-            border-top: 8px solid var(--accent-gold) !important;
+            position: relative;
+            color: #271c12 !important;
+            z-index: 1;
+        }
+
+        /* The Torn Aged Parchment Layer behind Login Card */
+        .login-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-color: #cbb38b;
+            background-image: 
+                radial-gradient(circle at 50% 45%, rgba(245, 232, 204, 0.85) 10%, rgba(186, 152, 104, 0.92) 70%, rgba(102, 71, 36, 0.98) 100%),
+                url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop');
+            background-size: cover;
+            background-blend-mode: multiply;
+            border: 4px solid #78350f;
+            border-radius: 6px;
+            filter: url(#torn-parchment-edge) drop-shadow(0 0 25px rgba(245, 158, 11, 0.55)) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.95));
+            box-shadow: inset 0 0 45px rgba(67, 38, 12, 0.85);
         }
 
         .login-card h2 {
             font-family: 'Mountains of Christmas', cursive;
-            font-size: 3rem;
-            color: var(--accent-gold);
-            margin-bottom: 0.75rem;
-            text-shadow: 0 0 15px rgba(253, 224, 71, 0.85);
+            font-size: 3.1rem;
+            color: #d97706;
+            margin-bottom: 0.4rem;
+            text-shadow: 
+                0 2px 2px rgba(40, 20, 5, 0.85),
+                0 0 12px rgba(253, 224, 71, 0.9);
+        }
+
+        .login-card p.subtitle {
+            color: #3e2723 !important;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 0.92rem;
+        }
+
+        .login-card label {
+            color: #271c12;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        /* Dark Chiseled Stone/Wood Panels for Dashboard & Items (Matches Mockup 2) */
+        .wishlist-view, .dashboard-header, .profile-card, .item-card {
+            position: relative;
+            color: #f8fafc !important;
+            z-index: 1;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .wishlist-view::before, .dashboard-header::before, .profile-card::before, .item-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-color: #161822;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(30, 35, 48, 0.88) 0%, rgba(12, 14, 20, 0.97) 100%),
+                url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop');
+            background-size: cover;
+            background-blend-mode: overlay;
+            border: 3px solid #d97706;
+            border-radius: 8px;
+            filter: url(#torn-parchment-edge) drop-shadow(0 0 18px rgba(245, 158, 11, 0.4)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.9));
+            box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.92);
         }
 
         .form-group {
-            margin: 1.5rem 0;
+            margin: 1.2rem 0 1.6rem;
             text-align: left;
         }
 
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: #f8fafc;
-        }
-
-        /* Smooth inputs to contrast dark hollow areas */
+        /* Recessed Dark Stone/Wood Dropdown & Inputs */
         select, input {
             width: 100%;
-            padding: 0.9rem;
-            background: rgba(4, 5, 8, 0.95) !important;
-            border: 3px solid #78350f !important;
-            border-radius: 12px/8px !important;
+            padding: 0.9rem 1.1rem;
+            background: linear-gradient(180deg, #11131a 0%, #1e222d 100%) !important;
+            border: 2px solid #574128 !important;
+            border-radius: 8px !important;
             color: #f8fafc !important;
-            font-size: 1rem;
+            font-size: 0.98rem;
             outline: none;
-            box-shadow: inset 0 4px 10px rgba(0,0,0,0.95);
-            transition: border-color 0.2s, box-shadow 0.2s;
+            box-shadow: 
+                inset 0 4px 12px rgba(0, 0, 0, 0.95),
+                0 2px 6px rgba(255, 255, 255, 0.15);
+            filter: url(#subtle-rough-edge);
         }
 
         select:focus, input:focus {
-            border-color: var(--accent-gold) !important;
-            box-shadow: 0 0 18px rgba(253, 224, 71, 0.8), inset 0 4px 10px rgba(0,0,0,0.95);
+            border-color: #fbbf24 !important;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.75), inset 0 4px 12px rgba(0, 0, 0, 0.95);
         }
 
-        /* 
-          Magical Carved Wood & Gold-Foil Embossed Buttons
-          Crafted to look like ancient plates in deep shadows.
-        */
+        /* ================= CARVED WOODEN & FIERY GOLD BUTTONS ================= */
         .action-btn, .edit-item, .delete-item, .claim-btn, .logout-btn, .back-btn {
-            background: 
-                linear-gradient(rgba(20, 12, 6, 0.8), rgba(12, 6, 2, 0.95)),
-                url('https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=300&auto=format&fit=crop') !important;
+            background-color: #3b2313 !important;
+            background-image: 
+                linear-gradient(180deg, rgba(82, 48, 24, 0.88) 0%, rgba(38, 20, 9, 0.95) 100%),
+                url('https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=400&auto=format&fit=crop') !important;
             background-size: cover;
-            background-blend-mode: multiply;
-            
-            border: 3px solid #d97706 !important;
-            border-radius: 12px 6px 14px 4px/6px 12px 4px 14px !important;
-            color: var(--accent-gold) !important;
+            background-blend-mode: overlay;
+            border: 2px solid #f59e0b !important;
+            border-radius: 6px !important;
+            color: #fde047 !important;
             font-family: 'Mountains of Christmas', cursive !important;
             font-size: 1.3rem !important;
-            font-weight: bold;
-            padding: 0.6rem 1.4rem;
-            letter-spacing: 0.5px;
+            font-weight: 700;
+            padding: 0.55rem 1.3rem;
+            letter-spacing: 0.8px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95), 0 0 10px rgba(251, 191, 36, 0.6);
             box-shadow: 
-                0 0 15px rgba(217, 119, 6, 0.5), 
-                inset 0 0 10px rgba(0, 0, 0, 0.95),
-                0 4px 8px rgba(0,0,0,0.6) !important;
+                0 0 18px rgba(245, 158, 11, 0.65),
+                inset 0 1px 3px rgba(253, 224, 71, 0.5),
+                inset 0 -4px 10px rgba(0, 0, 0, 0.9) !important;
+            filter: url(#subtle-rough-edge);
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .action-btn {
             width: 100%;
-            padding: 0.95rem;
-            font-size: 1.5rem !important;
+            padding: 0.85rem;
+            font-size: 1.55rem !important;
         }
 
         .action-btn:hover, .edit-item:hover, .claim-btn:hover, .logout-btn:hover, .back-btn:hover {
-            border-color: #fde047 !important;
-            box-shadow: 0 0 24px rgba(253, 224, 71, 0.8), inset 0 0 8px rgba(0, 0, 0, 0.8) !important;
+            border-color: #fef08a !important;
+            box-shadow: 
+                0 0 28px rgba(253, 224, 71, 0.95),
+                inset 0 0 12px rgba(251, 191, 36, 0.4) !important;
             transform: translateY(-1px);
         }
 
         .delete-item {
-            color: #fca5a5 !important;
-            border-color: #991b1b !important;
-            background: linear-gradient(135deg, #280a0a, #140404) !important;
+            color: #fecaca !important;
+            border-color: #dc2626 !important;
+            background-image: linear-gradient(180deg, rgba(95, 22, 22, 0.92), rgba(45, 10, 10, 0.98)) !important;
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.9) !important;
         }
 
-        .delete-item:hover {
-            border-color: #ef4444 !important;
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.8), inset 0 0 10px rgba(0,0,0,0.85) !important;
-        }
-
-        /* Dashboard & List Views */
+        /* ================= DASHBOARD & WAND BULLET LISTS ================= */
         .dashboard-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 1.5rem;
+            padding: 1.2rem 1.8rem;
             margin-bottom: 2rem;
         }
 
         .user-badge {
             font-weight: bold;
             color: var(--accent-gold);
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             text-shadow: 0 0 10px rgba(253, 224, 71, 0.6);
         }
 
@@ -312,18 +387,8 @@
             color: var(--accent-gold);
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid #b45309;
-            text-shadow: 0 0 12px rgba(253, 224, 71, 0.6);
-        }
-
-        .section-title::after {
-            content: " ✨";
-            animation: twinkle 2.5s ease-in-out infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.1); }
+            border-bottom: 2px solid rgba(217, 119, 6, 0.6);
+            text-shadow: 0 0 14px rgba(253, 224, 71, 0.65);
         }
 
         .family-grid {
@@ -334,7 +399,7 @@
         }
 
         .profile-card {
-            padding: 1.5rem;
+            padding: 1.6rem;
             text-align: left;
             display: flex;
             flex-direction: column;
@@ -342,7 +407,7 @@
         }
 
         .wishlist-view {
-            padding: 2rem;
+            padding: 2.2rem;
             margin-bottom: 2.5rem;
         }
 
@@ -357,7 +422,7 @@
         }
 
         .item-card {
-            padding: 1.25rem;
+            padding: 1.2rem 1.5rem;
             margin-bottom: 1rem;
             display: flex;
             justify-content: space-between;
@@ -369,11 +434,22 @@
             font-size: 1.15rem;
             margin-bottom: 0.25rem;
             color: #f8fafc;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Glowing Magic Wand Bullet in front of every Wish List Item! */
+        .item-info h4::before {
+            content: "🪄";
+            font-size: 1.1rem;
+            filter: drop-shadow(0 0 8px #fde047);
         }
 
         .item-info p {
             font-size: 0.85rem;
             color: #cbd5e1;
+            margin-left: 1.6rem;
         }
 
         .item-info a {
@@ -381,6 +457,8 @@
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 500;
+            margin-left: 1.6rem;
+            display: inline-block;
         }
 
         .item-info a:hover {
@@ -389,29 +467,30 @@
 
         .item-actions {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.6rem;
         }
 
         .claim-btn.claimed {
-            background-color: #1e293b !important;
+            background: #1e293b !important;
             color: #cbd5e1 !important;
             border: 1px solid #475569 !important;
             box-shadow: none !important;
         }
 
         .add-item-box {
-            background: rgba(8, 11, 18, 0.9);
+            background: rgba(10, 12, 18, 0.85);
             padding: 1.5rem;
-            border-radius: 12px;
+            border-radius: 10px;
             margin-top: 1.5rem;
-            border: 1px dashed #b45309;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+            border: 1px dashed #d97706;
         }
 
         .add-item-box h4 {
             margin-bottom: 1rem;
             color: var(--accent-gold);
-            font-size: 1.15rem;
+            font-size: 1.2rem;
+            font-family: 'Mountains of Christmas', cursive;
+            letter-spacing: 0.5px;
         }
 
         .inline-inputs {
@@ -424,6 +503,9 @@
             .inline-inputs {
                 grid-template-columns: 1fr;
             }
+            .candle-cluster {
+                display: none;
+            }
         }
 
         .hidden {
@@ -433,36 +515,60 @@
 </head>
 <body>
 
-    <!-- Sparkling Golden Ambient Particles -->
+    <!-- Hidden SVG Filter that physically warps straight CSS borders into jagged torn parchment edges -->
+    <svg width="0" height="0" style="position: absolute; pointer-events: none;">
+        <defs>
+            <filter id="torn-parchment-edge" x="-5%" y="-5%" width="110%" height="110%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+            <filter id="subtle-rough-edge" x="-2%" y="-2%" width="104%" height="104%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Sparkling Golden Ambient Embers -->
     <div class="sparkles"></div>
 
-    <!-- 3D floating and glowing magical candles -->
-    <div class="magical-candles">
-        <span class="candle candle-1">🕯️</span>
-        <span class="candle candle-2">🕯️</span>
-        <span class="candle candle-3">🕯️</span>
-        <span class="candle candle-4">🕯️</span>
-        <span class="candle candle-5">🕯️</span>
-    </div>
+    <!-- 3D Floating Wax Candles with Glowing Flames -->
+    <div class="candle-cluster candle-left-1"><div class="wax-candle"><div class="wax-flame"></div></div></div>
+    <div class="candle-cluster candle-left-2"><div class="wax-candle"><div class="wax-flame"></div></div></div>
+    <div class="candle-cluster candle-left-3"><div class="wax-candle"><div class="wax-flame"></div></div></div>
+    <div class="candle-cluster candle-right-1"><div class="wax-candle"><div class="wax-flame"></div></div></div>
+    <div class="candle-cluster candle-right-2"><div class="wax-candle"><div class="wax-flame"></div></div></div>
 
-    <!-- Glowing Patronus Spirit Animal -->
-    <div class="patronus-stag">🦌</div>
-
+    <!-- Ornate Wizarding Banner Header -->
     <header>
         <div class="brand">
             <div class="brand-icon">🎄</div>
             <div>
                 <h1>Family Holiday Wishlist</h1>
-                <p>Offline Test Mode (Zero Cloud API Usage)</p>
+                <p>JSON-Backed & Secret Santa Safe</p>
             </div>
+        </div>
+
+        <!-- Glowing Blue Ethereal Patronus Stag SVG -->
+        <div class="patronus-container" title="Expecto Patronum!">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M44 10C41 12 39 16 39 20C36 17 34 12 35 8M44 10C47 11 50 9 52 6M44 10L41 22M26 10C29 12 31 16 31 20C34 17 36 12 35 8M26 10C23 11 20 9 18 6M26 10L29 22M35 22C32 22 29 25 28 29L24 36L16 38C13 39 12 43 14 46L18 56M35 22C38 22 41 25 42 29L45 42L43 56M24 36L28 45L26 56M42 29L49 33C52 35 52 40 49 43L45 42" stroke="#bae6fd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="35" cy="26" r="14" fill="url(#patronus-glow)" opacity="0.55"/>
+                <defs>
+                    <radialGradient id="patronus-glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(35 26) scale(16)">
+                        <stop stop-color="#e0f2fe"/>
+                        <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+            </svg>
         </div>
     </header>
 
     <main>
-        <!-- LOGIN SCREEN WITH DROPDOWN -->
+        <!-- LOGIN SCREEN WITH TORN WEATHERED PARCHMENT -->
         <section id="loginScreen" class="login-card">
             <h2>Welcome Family!</h2>
-            <p style="margin-bottom: 1.5rem; font-size: 0.9rem; color: #cbd5e1;">Select your name from the list below to enter.</p>
+            <p class="subtitle">Select your name from the list below to enter.</p>
             <div class="form-group">
                 <label for="userSelect">Who are you?</label>
                 <select id="userSelect">
@@ -545,7 +651,8 @@
                     id: "member_1",
                     name: "Hanburger",
                     items: [
-                        { id: "item_1", title: "Spellbook Journal", notes: "Leather bound", link: "#", claimedBy: null }
+                        { id: "item_1", title: "Spellbook Journal", notes: "Leather bound", link: "#", claimedBy: null },
+                        { id: "item_1b", title: "Brass Telescope", notes: "Star gazing edition", link: "#", claimedBy: null }
                     ],
                     extraGifts: []
                 },
@@ -578,7 +685,6 @@
             return '🧑';
         }
 
-        // Initialize directly from local memory
         function initApp() {
             const select = document.getElementById('userSelect');
             select.innerHTML = '<option value="">-- Choose your name --</option>';

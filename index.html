@@ -98,22 +98,54 @@
             100% { transform: translateY(-90px) translateX(25px) scale(1.1); opacity: 0; }
         }
 
-        /* ================= CLEAN MIDNIGHT-BLUE & GOLD HEADER ================= */
+
+/* Translucent Midnight-Blue Glass Header */
         header {
-            background: linear-gradient(180deg, rgba(13, 19, 34, 0.92) 0%, rgba(20, 29, 49, 0.88) 100%);
-            backdrop-filter: blur(8px);
-            border-bottom: 2px solid #d97706;
+            background: linear-gradient(180deg, rgba(13, 19, 34, 0.65) 0%, rgba(20, 29, 49, 0.55) 100%) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border-bottom: 2px solid rgba(217, 119, 6, 0.8);
             padding: 1.1rem 2.8rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             box-shadow: 
-                0 4px 25px rgba(0, 0, 0, 0.8),
-                0 1px 12px rgba(245, 158, 11, 0.35);
+                0 8px 30px rgba(0, 0, 0, 0.6),
+                0 1px 15px rgba(245, 158, 11, 0.25);
             position: relative;
             z-index: 10;
         }
 
+        /* Magical Wizarding Font for All Inputs and Dropdowns */
+        select, input {
+            width: 100%;
+            padding: 0.9rem 1.1rem;
+            background: linear-gradient(180deg, #11131a 0%, #1e222d 100%) !important;
+            border: 2px solid #574128 !important;
+            border-radius: 8px !important;
+            color: #fde047 !important;
+            font-family: 'Mountains of Christmas', cursive !important;
+            font-size: 1.35rem !important;
+            letter-spacing: 0.5px;
+            outline: none;
+            box-shadow: 
+                inset 0 4px 12px rgba(0, 0, 0, 0.95),
+                0 2px 6px rgba(255, 255, 255, 0.15);
+            filter: url(#subtle-rough-edge);
+        }
+
+        select:focus, input:focus {
+            border-color: #fbbf24 !important;
+            box-shadow: 0 0 18px rgba(251, 191, 36, 0.8), inset 0 4px 12px rgba(0, 0, 0, 0.95);
+        }
+
+        /* Styling dropdown options to match */
+        select option {
+            background-color: #120d08;
+            color: #fde047;
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 1.2rem;
+        }
         header::after {
             content: "";
             position: absolute;

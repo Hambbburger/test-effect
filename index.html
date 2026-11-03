@@ -11,9 +11,6 @@
             --bg-dark: #05070d;
             --accent-gold: #fde047;
             --primary-red: #991b1b;
-            --secondary-green: #065f46;
-            --text-light: #f8fafc;
-            --text-muted: #cbd5e1;
         }
 
         * {
@@ -23,41 +20,42 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Magical Starry Night & Castle Atmosphere with Candlelight Glow */
+        /* Cinematic Warm Candlelit & Magical Castle Atmosphere */
         body {
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(circle at 85% 15%, rgba(245, 158, 11, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 15% 85%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-                linear-gradient(rgba(5, 7, 13, 0.75), rgba(5, 7, 13, 0.95)), 
+                radial-gradient(circle at 80% 25%, rgba(251, 191, 36, 0.2) 0%, transparent 45%),
+                radial-gradient(circle at 20% 75%, rgba(96, 165, 250, 0.15) 0%, transparent 50%),
+                linear-gradient(rgba(5, 7, 13, 0.6), rgba(5, 7, 13, 0.85)), 
                 url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            color: var(--text-light);
+            color: #f8fafc;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             position: relative;
+            overflow-x: hidden;
         }
 
-        /* Floating Patronus Stag Effect in the corner */
-        body::before {
-            content: "🦌";
+        /* Glowing Ethereal Patronus Stag Effect */
+        .patronus-stag {
             position: fixed;
             top: 40px;
-            right: 50px;
-            font-size: 3.5rem;
-            opacity: 0.75;
-            filter: drop-shadow(0 0 25px #93c5fd);
+            right: 60px;
+            font-size: 3.8rem;
+            color: #bae6fd;
+            text-shadow: 0 0 20px #3b82f6, 0 0 40px #93c5fd;
             pointer-events: none;
-            z-index: 10;
+            z-index: 11;
+            opacity: 0.85;
             animation: floatStag 5s ease-in-out infinite alternate;
         }
 
         @keyframes floatStag {
-            0% { transform: translateY(0px) scale(1); opacity: 0.6; }
-            100% { transform: translateY(-8px) scale(1.05); opacity: 0.85; }
+            0% { transform: translateY(0px) scale(1); opacity: 0.7; }
+            100% { transform: translateY(-10px) scale(1.06); opacity: 0.95; }
         }
 
         header {
@@ -92,12 +90,12 @@
             font-size: 2.5rem;
             color: var(--accent-gold);
             letter-spacing: 1px;
-            text-shadow: 0 0 12px rgba(253, 224, 71, 0.6), 0 0 25px rgba(217, 119, 6, 0.4);
+            text-shadow: 0 0 12px rgba(253, 224, 71, 0.7), 0 0 25px rgba(217, 119, 6, 0.5);
         }
 
         header p {
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: #cbd5e1;
         }
 
         main {
@@ -108,15 +106,17 @@
             padding: 0 1.5rem;
         }
 
-        /* Aged Parchment Textured Boxes with Warm Bronze Borders */
+        /* Authentic Weathered Photographic Parchment Cards */
         .login-card, .wishlist-view, .dashboard-header, .profile-card, .item-card {
-            background: 
-                radial-gradient(circle at 50% 50%, rgba(40, 32, 20, 0.5) 0%, rgba(15, 18, 26, 0.95) 100%),
-                linear-gradient(135deg, rgba(30, 24, 16, 0.9), rgba(12, 15, 22, 0.95)) !important;
-            backdrop-filter: blur(8px);
-            border: 3px solid #92400e !important;
-            border-radius: 14px;
-            box-shadow: 0 0 25px rgba(180, 83, 9, 0.3), inset 0 0 35px rgba(0, 0, 0, 0.9) !important;
+            background-color: #1a140d !important;
+            background-image: 
+                linear-gradient(rgba(15, 12, 8, 0.85), rgba(15, 12, 8, 0.92)),
+                url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop') !important;
+            background-size: cover;
+            background-blend-mode: overlay;
+            border: 3px solid #b45309 !important;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(180, 83, 9, 0.4), inset 0 0 45px rgba(0, 0, 0, 0.95) !important;
             color: #f8fafc !important;
         }
 
@@ -126,15 +126,15 @@
             margin: 4rem auto;
             padding: 3rem 2.5rem;
             text-align: center;
-            border-top: 6px solid var(--accent-gold) !important;
+            border-top: 8px solid var(--accent-gold) !important;
         }
 
         .login-card h2 {
             font-family: 'Mountains of Christmas', cursive;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--accent-gold);
             margin-bottom: 0.5rem;
-            text-shadow: 0 0 10px rgba(253, 224, 71, 0.5);
+            text-shadow: 0 0 12px rgba(253, 224, 71, 0.7);
         }
 
         .form-group {
@@ -147,52 +147,52 @@
             font-weight: 600;
             margin-bottom: 0.5rem;
             font-size: 0.9rem;
-            color: var(--text-light);
+            color: #f8fafc;
         }
 
         select, input {
             width: 100%;
             padding: 0.85rem;
-            background: rgba(8, 10, 15, 0.95) !important;
+            background: rgba(5, 7, 12, 0.98) !important;
             border: 2px solid #b45309 !important;
             border-radius: 8px;
-            color: var(--text-light) !important;
+            color: #f8fafc !important;
             font-size: 1rem;
             outline: none;
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.8);
+            box-shadow: inset 0 3px 8px rgba(0,0,0,0.9);
             transition: border-color 0.2s;
         }
 
         select:focus, input:focus {
             border-color: var(--accent-gold) !important;
-            box-shadow: 0 0 15px rgba(253, 224, 71, 0.6), inset 0 2px 5px rgba(0,0,0,0.8);
+            box-shadow: 0 0 15px rgba(253, 224, 71, 0.7), inset 0 3px 8px rgba(0,0,0,0.9);
         }
 
-        /* Magical Wood-Carved / Wax Seal Buttons */
+        /* Magical Wood-Carved Buttons */
         .action-btn, .edit-item, .delete-item, .claim-btn, .logout-btn, .back-btn {
-            background: linear-gradient(135deg, #1c140c, #2d1f11) !important;
+            background: linear-gradient(135deg, #23170c, #3a2714) !important;
             border: 2px solid #d97706 !important;
             border-radius: 8px;
             color: #fde047 !important;
             font-family: 'Mountains of Christmas', cursive !important;
-            font-size: 1.1rem !important;
+            font-size: 1.2rem !important;
             padding: 0.6rem 1.2rem;
             letter-spacing: 0.5px;
-            box-shadow: 0 0 12px rgba(217, 119, 6, 0.4), inset 0 0 8px rgba(0, 0, 0, 0.9) !important;
+            box-shadow: 0 0 15px rgba(217, 119, 6, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.95) !important;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .action-btn {
             width: 100%;
-            padding: 0.85rem;
-            font-size: 1.3rem !important;
+            padding: 0.9rem;
+            font-size: 1.4rem !important;
         }
 
         .action-btn:hover, .edit-item:hover, .claim-btn:hover, .logout-btn:hover, .back-btn:hover {
             border-color: #fde047 !important;
-            background: linear-gradient(135deg, #2d1f11, #3d2916) !important;
-            box-shadow: 0 0 18px rgba(253, 224, 71, 0.6), inset 0 0 10px rgba(0, 0, 0, 0.7) !important;
+            background: linear-gradient(135deg, #3a2714, #4e351b) !important;
+            box-shadow: 0 0 20px rgba(253, 224, 71, 0.7), inset 0 0 12px rgba(0, 0, 0, 0.8) !important;
             transform: translateY(-1px);
         }
 
@@ -204,7 +204,7 @@
 
         .delete-item:hover {
             border-color: #ef4444 !important;
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.6), inset 0 0 10px rgba(0,0,0,0.7) !important;
+            box-shadow: 0 0 18px rgba(239, 68, 68, 0.7), inset 0 0 10px rgba(0,0,0,0.8) !important;
         }
 
         /* Dashboard & Views */
@@ -220,17 +220,17 @@
             font-weight: bold;
             color: var(--accent-gold);
             font-size: 1.1rem;
-            text-shadow: 0 0 8px rgba(253, 224, 71, 0.4);
+            text-shadow: 0 0 8px rgba(253, 224, 71, 0.5);
         }
 
         .section-title {
             font-family: 'Mountains of Christmas', cursive;
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--accent-gold);
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
-            border-bottom: 1px solid #b45309;
-            text-shadow: 0 0 8px rgba(253, 224, 71, 0.4);
+            border-bottom: 2px solid #b45309;
+            text-shadow: 0 0 10px rgba(253, 224, 71, 0.5);
         }
 
         .section-title::after {
@@ -283,14 +283,14 @@
         }
 
         .item-info h4 {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             margin-bottom: 0.25rem;
-            color: var(--text-light);
+            color: #f8fafc;
         }
 
         .item-info p {
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: #cbd5e1;
         }
 
         .item-info a {
@@ -311,13 +311,13 @@
 
         .claim-btn.claimed {
             background-color: #1e293b !important;
-            color: var(--text-muted) !important;
+            color: #cbd5e1 !important;
             border: 1px solid #475569 !important;
             box-shadow: none !important;
         }
 
         .add-item-box {
-            background: rgba(10, 14, 23, 0.8);
+            background: rgba(10, 14, 23, 0.85);
             padding: 1.5rem;
             border-radius: 12px;
             margin-top: 1.5rem;
@@ -327,7 +327,7 @@
         .add-item-box h4 {
             margin-bottom: 1rem;
             color: var(--accent-gold);
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         .inline-inputs {
@@ -346,7 +346,7 @@
             text-align: center;
             padding: 3rem;
             font-style: italic;
-            color: var(--text-muted);
+            color: #cbd5e1;
         }
 
         .hidden {
@@ -355,6 +355,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Glowing Patronus Spirit Animal -->
+    <div class="patronus-stag">🦌</div>
 
     <header>
         <div class="brand">
@@ -375,7 +378,7 @@
         <!-- LOGIN SCREEN WITH DROPDOWN -->
         <section id="loginScreen" class="login-card hidden">
             <h2>Welcome Family!</h2>
-            <p style="margin-bottom: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">Select your name from the list below to enter.</p>
+            <p style="margin-bottom: 1.5rem; font-size: 0.9rem; color: #cbd5e1;">Select your name from the list below to enter.</p>
             <div class="form-group">
                 <label for="userSelect">Who are you?</label>
                 <select id="userSelect">
@@ -389,7 +392,7 @@
         <section id="dashboardScreen" class="hidden">
             <div class="dashboard-header">
                 <div>
-                    <span style="font-size: 0.8rem; color: var(--text-muted); display: block;">Logged in as:</span>
+                    <span style="font-size: 0.8rem; color: #cbd5e1; display: block;">Logged in as:</span>
                     <span class="user-badge" id="currentUserName"></span>
                 </div>
                 <button class="logout-btn" onclick="logout()">Log Out</button>
@@ -398,7 +401,7 @@
             <!-- My Wish List Section -->
             <div class="wishlist-view" id="myListView">
                 <h3 class="section-title">✨ My Christmas Wish List</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Add items you'd love to receive. Family members can see these to buy gifts, but they cannot see who claimed what!</p>
+                <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 1rem;">Add items you'd love to receive. Family members can see these to buy gifts, but they cannot see who claimed what!</p>
                 
                 <ul class="item-list" id="myItemsList"></ul>
 
@@ -415,7 +418,7 @@
 
             <!-- Family Members Lists Overview -->
             <h3 class="section-title">🎁 Family Member Wish Lists</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Click on a family member to view their list and secretly claim gifts you want to buy them!</p>
+            <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 1.5rem;">Click on a family member to view their list and secretly claim gifts you want to buy them!</p>
             
             <div class="family-grid" id="familyGrid"></div>
         </section>
@@ -432,7 +435,7 @@
                 <!-- EXTRA GIFTS NOT ON THE LIST SECTION -->
                 <div style="margin-top: 2.5rem;">
                     <h3 class="section-title">🛍️ Extra / Surprise Gifts Bought</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Bought something else for them not listed above? Add it here so nobody else buys duplicates!</p>
+                    <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 1rem;">Bought something else for them not listed above? Add it here so nobody else buys duplicates!</p>
                     
                     <ul class="item-list" id="extraItemsList"></ul>
 
@@ -547,7 +550,7 @@
             myListContainer.innerHTML = '';
             
             if (currentUser.items.length === 0) {
-                myListContainer.innerHTML = '<p style="color: var(--text-muted); font-style: italic; padding: 0.5rem 0;">Your wish list is currently empty. Add items below!</p>';
+                myListContainer.innerHTML = '<p style="color: #cbd5e1; font-style: italic; padding: 0.5rem 0;">Your wish list is currently empty. Add items below!</p>';
             } else {
                 currentUser.items.forEach(item => {
                     const li = document.createElement('li');
@@ -579,8 +582,8 @@
                 card.innerHTML = `
                     <div>
                         <div style="font-size: 2rem; margin-bottom: 0.5rem;">${getAvatar(member.name)}</div>
-                        <h4 style="font-size: 1.15rem; margin-bottom: 0.2rem; color: var(--text-light);">${escapeHtml(member.name)}'s Wishlist</h4>
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">${totalItems} item(s) listed</p>
+                        <h4 style="font-size: 1.15rem; margin-bottom: 0.2rem; color: #f8fafc;">${escapeHtml(member.name)}'s Wishlist</h4>
+                        <p style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 1rem;">${totalItems} item(s) listed</p>
                     </div>
                     <button class="action-btn" onclick="viewFamilyMember('${member.id}')">View List & Buy Gifts</button>
                 `;
@@ -650,180 +653,4 @@
 
             currentUser.items = currentUser.items.filter(i => i.id !== itemId);
             
-            const memberIndex = familyData.members.findIndex(m => m.id === currentUser.id);
-            familyData.members[memberIndex] = currentUser;
-
-            await saveCloudData();
-            renderDashboard();
-        }
-
-        async function viewFamilyMember(memberId) {
-            const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
-                headers: { 'X-Master-Key': MASTER_KEY }
-            });
-            const data = await response.json();
-            familyData = data.record;
-            familyData.members.forEach(m => { 
-                if (!m.items) m.items = [];
-                if (!m.extraGifts) m.extraGifts = []; 
-            });
-
-            viewingMemberId = memberId;
-            const member = familyData.members.find(m => m.id === memberId);
-
-            document.getElementById('dashboardScreen').classList.add('hidden');
-            document.getElementById('detailScreen').classList.remove('hidden');
-            document.getElementById('detailMemberTitle').textContent = `${member.name}'s Wishlist & Extra Gifts`;
-
-            renderDetailList();
-        }
-
-        function renderDetailList() {
-            const member = familyData.members.find(m => m.id === viewingMemberId);
-            
-            const container = document.getElementById('detailItemsList');
-            container.innerHTML = '';
-
-            if (member.items.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-muted); font-style: italic; font-size: 0.9rem;">No official items listed yet.</p>';
-            } else {
-                member.items.forEach(item => {
-                    const isClaimedByMe = item.claimedBy === currentUser.id;
-                    const isClaimedBySomeoneElse = item.claimedBy && !isClaimedByMe;
-
-                    let btnText = "Claim Gift 🎁";
-                    let btnClass = "claim-btn";
-                    let statusBadge = "";
-
-                    if (isClaimedByMe) {
-                        btnText = "Unclaim (You got this)";
-                        btnClass = "claim-btn claimed";
-                        statusBadge = `<p style="color: #34d399; font-weight: 600; margin-top: 0.25rem;">✓ You have claimed this gift!</p>`;
-                    } else if (isClaimedBySomeoneElse) {
-                        btnText = "Claimed";
-                        btnClass = "claim-btn claimed";
-                        statusBadge = `<p style="color: var(--text-muted); font-style: italic; margin-top: 0.25rem;">🔒 Claimed by another family member</p>`;
-                    }
-
-                    const li = document.createElement('li');
-                    li.className = 'item-card';
-                    li.innerHTML = `
-                        <div class="item-info">
-                            <h4>${escapeHtml(item.title)}</h4>
-                            ${item.notes ? `<p>Notes: ${escapeHtml(item.notes)}</p>` : ''}
-                            ${item.link ? `<a href="${escapeHtml(item.link)}" target="_blank">🔗 View Product Link</a>` : ''}
-                            ${statusBadge}
-                        </div>
-                        <div>
-                            ${!isClaimedBySomeoneElse ? `<button class="${btnClass}" onclick="toggleClaim('${item.id}')">${btnText}</button>` : `<button class="claim-btn claimed" disabled>Claimed</button>`}
-                        </div>
-                    `;
-                    container.appendChild(li);
-                });
-            }
-
-            const extraContainer = document.getElementById('extraItemsList');
-            extraContainer.innerHTML = '';
-
-            if (!member.extraGifts || member.extraGifts.length === 0) {
-                extraContainer.innerHTML = '<p style="color: var(--text-muted); font-style: italic; font-size: 0.9rem;">No extra gifts logged yet.</p>';
-            } else {
-                member.extraGifts.forEach(extra => {
-                    const isMyExtra = extra.boughtBy === currentUser.name;
-                    const li = document.createElement('li');
-                    li.className = 'item-card';
-                    li.innerHTML = `
-                        <div class="item-info">
-                            <h4>${escapeHtml(extra.title)}</h4>
-                            ${extra.notes ? `<p>Notes: ${escapeHtml(extra.notes)}</p>` : ''}
-                            ${extra.link ? `<a href="${escapeHtml(extra.link)}" target="_blank">🔗 View Product Link</a>` : ''}
-                            <p style="color: var(--accent-gold); font-weight: 600; margin-top: 0.25rem;">🎁 Bought by: ${escapeHtml(extra.boughtBy)}</p>
-                        </div>
-                        <div>
-                            ${isMyExtra ? `<button class="delete-item" onclick="deleteExtraGift('${extra.id}')">Remove</button>` : `<span style="font-size: 0.8rem; color: var(--text-muted);">Locked</span>`}
-                        </div>
-                    `;
-                    extraContainer.appendChild(li);
-                });
-            }
-        }
-
-        async function toggleClaim(itemId) {
-            const member = familyData.members.find(m => m.id === viewingMemberId);
-            const item = member.items.find(i => i.id === itemId);
-
-            if (item.claimedBy === currentUser.id) {
-                item.claimedBy = null;
-            } else if (!item.claimedBy) {
-                item.claimedBy = currentUser.id;
-            }
-
-            await saveCloudData();
-            renderDetailList();
-        }
-
-        async function addExtraGiftItem() {
-            const titleInput = document.getElementById('newExtraTitle');
-            const linkInput = document.getElementById('newExtraLink');
-            const notesInput = document.getElementById('newExtraNotes');
-
-            const title = titleInput.value.trim();
-            if (!title) {
-                alert("Please enter the extra gift name.");
-                return;
-            }
-
-            const memberIndex = familyData.members.findIndex(m => m.id === viewingMemberId);
-            if (!familyData.members[memberIndex].extraGifts) {
-                familyData.members[memberIndex].extraGifts = [];
-            }
-
-            const newExtra = {
-                id: 'extra_' + Date.now(),
-                title: title,
-                link: linkInput.value.trim(),
-                notes: notesInput.value.trim(),
-                boughtBy: currentUser.name
-            };
-
-            familyData.members[memberIndex].extraGifts.push(newExtra);
-
-            await saveCloudData();
-            renderDetailList();
-
-            titleInput.value = '';
-            linkInput.value = '';
-            notesInput.value = '';
-        }
-
-        async function deleteExtraGift(extraId) {
-            if (!confirm("Remove this extra gift log?")) return;
-
-            const memberIndex = familyData.members.findIndex(m => m.id === viewingMemberId);
-            familyData.members[memberIndex].extraGifts = familyData.members[memberIndex].extraGifts.filter(e => e.id !== extraId);
-
-            await saveCloudData();
-            renderDetailList();
-        }
-
-        async function showDashboard() {
-            const response = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
-                headers: { 'X-Master-Key': MASTER_KEY }
-            });
-            const data = await response.json();
-            familyData = data.record;
-
-            document.getElementById('detailScreen').classList.add('hidden');
-            document.getElementById('dashboardScreen').classList.remove('hidden');
-            renderDashboard();
-        }
-
-        function escapeHtml(str) {
-            if (!str) return '';
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-        }
-
-        fetchCloudData();
-    </script>
-</body>
-</html>
+            const memberIndex = familyData.

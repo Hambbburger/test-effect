@@ -859,32 +859,56 @@ main,
     }
 }
     
-/* Fix logged-in parchment banner on phones */
+
+/* FIX: Mobile logged-in parchment banner */
 @media (max-width: 600px) {
 
     .dashboard-header {
+        position: relative;
         width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         flex-wrap: nowrap;
         gap: 12px;
+
         padding: 18px;
+        margin: 0 0 1.5rem;
+
+        /* Draw parchment directly on the header */
+        background:
+            radial-gradient(
+                ellipse at center,
+                #f5e8cc 0%,
+                #d8b98b 70%,
+                #9a6b3d 100%
+            ) !important;
+
+        border: 2px solid #72451f;
+        border-radius: 8px;
+
+        box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.65),
+            inset 0 0 20px rgba(83, 46, 15, 0.45);
+
+        color: #271c12 !important;
+        filter: none !important;
         isolation: isolate;
     }
 
-    /* Prevent the SVG filter from shifting
-       the parchment on mobile Safari */
+    /* Completely remove the problematic layer */
     .dashboard-header::before {
-        filter: none;
-        inset: 0;
-        border-radius: 8px;
+        content: none !important;
+        display: none !important;
     }
 
-    /* Keep username readable */
+    /* Username area */
     .dashboard-header > div {
-        flex: 1;
+        flex: 1 1 auto;
         min-width: 0;
         overflow-wrap: anywhere;
     }
@@ -893,14 +917,18 @@ main,
         display: block;
         font-size: 1.45rem;
         line-height: 1.2;
+        color: #271c12;
     }
 
+    /* Logout button */
     .dashboard-header .logout-btn {
         flex: 0 0 auto;
-        width: auto;
-        max-width: 42%;
+        width: auto !important;
+        max-width: 45%;
+        padding: 0.6rem 0.9rem;
     }
 }
+
 
 
     </style>

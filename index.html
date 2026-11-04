@@ -22,16 +22,18 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        /* 
+           Uses the custom generated background image (bg-magic.jpg) 
+           which has the realistic sconces, candles, and Patronus stag baked in!
+        */
         body {
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(circle at 50% 15%, rgba(251, 191, 36, 0.22) 0%, transparent 40%),
-                radial-gradient(circle at 12% 45%, rgba(245, 158, 11, 0.25) 0%, transparent 30%),
-                radial-gradient(circle at 88% 45%, rgba(245, 158, 11, 0.25) 0%, transparent 30%),
-                linear-gradient(rgba(7, 10, 18, 0.55), rgba(7, 10, 18, 0.88)), 
-                url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop');
+                radial-gradient(circle at 50% 15%, rgba(251, 191, 36, 0.15) 0%, transparent 45%),
+                linear-gradient(rgba(5, 7, 12, 0.25), rgba(5, 7, 12, 0.55)), 
+                url('bg-magic.png');
             background-size: cover;
-            background-position: center;
+            background-position: center top;
             background-attachment: fixed;
             color: #f8fafc;
             min-height: 100vh;
@@ -39,6 +41,23 @@
             flex-direction: column;
             position: relative;
             overflow-x: hidden;
+        }
+
+        /* Subtle living candlelight pulse overlay over the left & right background sconces */
+        .ambient-candle-pulse {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            background: 
+                radial-gradient(circle at 10% 42%, rgba(251, 191, 36, 0.18) 0%, transparent 22%),
+                radial-gradient(circle at 90% 42%, rgba(251, 191, 36, 0.18) 0%, transparent 22%);
+            animation: pulseGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.6; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1.02); }
         }
 
         /* ================= MAGICAL SVG ICON STYLING ================= */
@@ -98,35 +117,6 @@
             30% { opacity: 0.85; }
             70% { opacity: 0.65; }
             100% { transform: translateY(-90px) translateX(25px) scale(1.1); opacity: 0; }
-        }
-
-        /* ================= LARGE ETHEREAL BACKGROUND STAG PATRONUS ================= */
-        .bg-patronus-mist {
-            position: fixed;
-            top: 250px;
-            right: calc(50% - 540px);
-            width: 340px;
-            height: 440px;
-            pointer-events: none;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(ellipse at center, rgba(186, 230, 253, 0.25) 0%, rgba(56, 189, 248, 0.08) 45%, transparent 70%);
-            filter: blur(0.4px);
-            animation: patronusBreathe 6s ease-in-out infinite alternate;
-        }
-
-        .bg-patronus-stag {
-            width: 100%;
-            height: 100%;
-            opacity: 0.42;
-            filter: drop-shadow(0 0 15px #bae6fd) drop-shadow(0 0 35px #38bdf8) drop-shadow(0 0 60px #0284c7);
-        }
-
-        @keyframes patronusBreathe {
-            0% { transform: translateY(4px) scale(0.98); opacity: 0.75; }
-            100% { transform: translateY(-8px) scale(1.03); opacity: 1; }
         }
 
         /* ================= FLOATING CENTERED TITLE ================= */
@@ -196,139 +186,10 @@
             opacity: 0.85;
         }
 
-        /* ================= ORNATE WALL-MOUNTED BRASS SCONCES ================= */
-        .sconces-wrapper {
-            position: fixed;
-            width: 100%;
-            max-width: 1320px;
-            left: 50%;
-            transform: translateX(-50%);
-            top: 190px;
-            pointer-events: none;
-            z-index: 4;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 1rem;
-        }
-
-        .wall-sconce {
-            position: relative;
-            width: 165px;
-            height: 310px;
-            filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.92));
-        }
-
-        .wall-sconce.right-sconce {
-            transform: scaleX(-1);
-        }
-
-        /* SVG Ornate Cast-Brass Wall Plate & Scroll Arms */
-        .sconce-metalwork {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-        }
-
-        /* Individual Dripping Wax Candles Sitting on the Sconce Cups */
-        .sconce-candle {
-            position: absolute;
-            width: 24px;
-            background: linear-gradient(90deg, #d9b87c 0%, #fff8eb 42%, #edd29f 78%, #8c5820 100%);
-            border-radius: 3px 3px 2px 2px;
-            box-shadow: 
-                inset 0 -10px 15px rgba(92, 48, 10, 0.55),
-                0 0 18px rgba(251, 191, 36, 0.25);
-            z-index: 1;
-        }
-
-        /* Left Sconce Candle Positions (Mirrored automatically for Right Sconce) */
-        .sc-main {
-            height: 105px;
-            left: 58px;
-            top: 52px;
-            width: 26px;
-        }
-        .sc-inner {
-            height: 82px;
-            left: 102px;
-            top: 86px;
-            width: 22px;
-        }
-        .sc-back {
-            height: 68px;
-            left: 34px;
-            top: 94px;
-            width: 20px;
-            opacity: 0.9;
-            filter: brightness(0.88);
-        }
-
-        /* Realistic Melted Wax Crown & Vertical Drips */
-        .sconce-candle::before {
-            content: "";
-            position: absolute;
-            top: -3px;
-            left: -2px;
-            right: -2px;
-            height: 9px;
-            background: radial-gradient(ellipse at center, #fef3c7 20%, #d9b87c 90%);
-            border-radius: 50%;
-            box-shadow: 
-                3px 8px 0 -1px #faeed7,
-                -2px 14px 0 -1.5px #ebd09e,
-                7px 19px 0 -2px #faeed7;
-        }
-
-        .sconce-candle::after {
-            content: "";
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            width: 4px;
-            height: 32px;
-            background: linear-gradient(180deg, #fff8eb 0%, #dfc088 100%);
-            border-radius: 0 0 4px 4px;
-            box-shadow: 10px 6px 0 -0.5px #f5e4c3;
-        }
-
-        .wick {
-            position: absolute;
-            top: -7px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 6px;
-            background: #1c1917;
-        }
-
-        .flame {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 13px;
-            height: 25px;
-            background: radial-gradient(ellipse at 50% 78%, #ffffff 25%, #fef08a 55%, #f59e0b 85%, transparent 100%);
-            border-radius: 50% 50% 35% 35% / 65% 65% 35% 35%;
-            box-shadow: 
-                0 0 12px 3px rgba(254, 240, 138, 0.95),
-                0 0 28px 9px rgba(251, 191, 36, 0.65),
-                0 0 55px 18px rgba(245, 158, 11, 0.35);
-            animation: naturalFlicker 2.4s ease-in-out infinite alternate;
-        }
-
-        @keyframes naturalFlicker {
-            0% { transform: translateX(-50%) scale(0.95, 1.04) rotate(-2deg); }
-            50% { transform: translateX(-50%) scale(1.04, 0.96) rotate(1.5deg); }
-            100% { transform: translateX(-50%) scale(0.98, 1.02) rotate(-1deg); }
-        }
-
         /* ================= MAIN CONTENT & WEATHERED PARCHMENT ================= */
         main {
             flex: 1;
-            max-width: 820px;
+            max-width: 760px;
             width: 100%;
             margin: 1.2rem auto 3.5rem;
             padding: 0 1.5rem;
@@ -441,7 +302,7 @@
             z-index: -1;
             background-color: #1c1d21;
             background-image: 
-                radial-gradient(circle at 50% 45%, rgba(44, 46, 52, 0.88) 0%, rgba(20, 21, 26, 0.96) 75%, rgba(10, 11, 14, 0.99) 100%),
+                radial-gradient(circle at 50% 45%, rgba(44, 46, 52, 0.86) 0%, rgba(20, 21, 26, 0.94) 75%, rgba(10, 11, 14, 0.98) 100%),
                 url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop');
             background-size: cover;
             background-blend-mode: multiply;
@@ -570,7 +431,7 @@
 
         .family-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2.5rem;
         }
@@ -598,7 +459,6 @@
             margin-top: 0.5rem;
         }
 
-        /* Borderless Engraved Slate Rows (Matches New Mockup!) */
         .item-card {
             padding: 1.15rem 0.5rem;
             border-bottom: 1px solid rgba(217, 119, 6, 0.25);
@@ -612,7 +472,6 @@
             border-bottom: none;
         }
 
-        /* Magical Font for Added Wishlist Item Titles! */
         .item-info h4 {
             font-family: 'Mountains of Christmas', cursive !important;
             font-size: 1.75rem !important;
@@ -662,7 +521,6 @@
             box-shadow: none !important;
         }
 
-        /* Separate Torn Dark-Slate Card for "Add a New Item to Your List" */
         .add-item-box {
             padding: 1.6rem 2.2rem;
             margin-bottom: 2.5rem;
@@ -682,12 +540,6 @@
             grid-template-columns: 1.8fr 1.1fr 1.1fr auto;
             gap: 0.75rem;
             align-items: center;
-        }
-
-        @media(max-width: 1150px) {
-            .sconces-wrapper, .bg-patronus-mist {
-                display: none;
-            }
         }
 
         @media(max-width: 768px) {
@@ -723,12 +575,6 @@
                 <stop offset="50%" stop-color="#fbbf24" />
                 <stop offset="100%" stop-color="#b45309" />
             </linearGradient>
-            <linearGradient id="brass-sconce-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#fde68a" />
-                <stop offset="35%" stop-color="#b45309" />
-                <stop offset="70%" stop-color="#78350f" />
-                <stop offset="100%" stop-color="#271206" />
-            </linearGradient>
             <linearGradient id="ruby-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#ef4444" />
                 <stop offset="100%" stop-color="#7f1d1d" />
@@ -738,29 +584,6 @@
                 <stop offset="50%" stop-color="#059669" />
                 <stop offset="100%" stop-color="#064e3b" />
             </linearGradient>
-
-            <!-- Ornate Wall Sconce Bracket & Curved Scroll Arms -->
-            <g id="ornate-sconce-bracket">
-                <!-- Wall Mounting Backplate -->
-                <path d="M12 20 C24 35, 28 75, 24 140 C28 195, 22 245, 10 275 L4 275 L4 20 Z" fill="url(#brass-sconce-grad)" stroke="#f59e0b" stroke-width="1"/>
-                <ellipse cx="14" cy="145" rx="9" ry="48" fill="url(#brass-sconce-grad)" stroke="#fde68a" stroke-width="1"/>
-                <!-- Decorative Top & Bottom Backplate Finials -->
-                <circle cx="12" cy="16" r="6" fill="url(#brass-sconce-grad)"/>
-                <circle cx="10" cy="280" r="6" fill="url(#brass-sconce-grad)"/>
-                <!-- Curved Scroll Arm 1 (Main Center Candle) -->
-                <path d="M18 175 C18 245, 71 245, 71 157" fill="none" stroke="url(#brass-sconce-grad)" stroke-width="6.5" stroke-linecap="round"/>
-                <path d="M22 195 C38 220, 56 215, 56 190 C56 175, 42 175, 44 190" fill="none" stroke="url(#brass-sconce-grad)" stroke-width="3.5" stroke-linecap="round"/>
-                <!-- Curved Scroll Arm 2 (Inner Right Candle) -->
-                <path d="M20 185 C35 255, 113 255, 113 168" fill="none" stroke="url(#brass-sconce-grad)" stroke-width="5.5" stroke-linecap="round"/>
-                <!-- Curved Scroll Arm 3 (Back Candle) -->
-                <path d="M16 165 C16 210, 44 215, 44 162" fill="none" stroke="url(#brass-sconce-grad)" stroke-width="4.5" stroke-linecap="round"/>
-                <!-- Brass Candle Drip Bobeches (Cups) -->
-                <ellipse cx="71" cy="157" rx="20" ry="5" fill="url(#brass-sconce-grad)" stroke="#fde68a" stroke-width="1"/>
-                <path d="M58 157 L64 168 L78 168 L84 157 Z" fill="url(#brass-sconce-grad)"/>
-                <ellipse cx="113" cy="168" rx="18" ry="4.5" fill="url(#brass-sconce-grad)" stroke="#fde68a" stroke-width="1"/>
-                <path d="M101 168 L106 178 L120 178 L125 168 Z" fill="url(#brass-sconce-grad)"/>
-                <ellipse cx="44" cy="162" rx="15" ry="4" fill="url(#brass-sconce-grad)" stroke="#d97706" stroke-width="0.8"/>
-            </g>
 
             <g id="icon-tree">
                 <polygon points="32,10 14,50 50,50" fill="url(#emerald-grad)" stroke="url(#gold-grad)" stroke-width="2.5" stroke-linejoin="round"/>
@@ -788,7 +611,6 @@
                 <path d="M16 42 Q17 48 23 49 Q17 50 16 56 Q15 50 9 49 Q15 48 16 42 Z" fill="#fef08a"/>
             </g>
 
-            <!-- Diagonal Wooden Wand Icon -->
             <g id="icon-wand">
                 <line x1="8" y1="56" x2="48" y2="16" stroke="#854d0e" stroke-width="4.5" stroke-linecap="round"/>
                 <line x1="10" y1="54" x2="49" y2="15" stroke="url(#gold-grad)" stroke-width="1.8" stroke-linecap="round"/>
@@ -824,52 +646,11 @@
         </defs>
     </svg>
 
+    <!-- Subtle Living Light Pulse over Background Sconces -->
+    <div class="ambient-candle-pulse"></div>
+
     <!-- Organic Randomized Floating Fireflies -->
     <div class="fireflies" id="firefliesContainer"></div>
-
-    <!-- Ethereal Misty Background Stag Patronus (Right Side Background) -->
-    <div class="bg-patronus-mist">
-        <svg class="bg-patronus-stag" viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Majestic Antlers -->
-            <path d="M100 72 C85 55, 62 42, 48 18 C58 34, 72 38, 82 48 C75 34, 68 20, 72 8 C78 24, 86 38, 94 52" stroke="#e0f2fe" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
-            <path d="M106 72 C122 55, 145 42, 158 18 C148 34, 134 38, 124 48 C131 34, 138 20, 134 8 C128 24, 120 38, 112 52" stroke="#e0f2fe" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
-            <!-- Glowing Ethereal Stag Head, Neck, and Torso Silhouette -->
-            <path d="M92 70 C96 62, 110 62, 114 70 L120 88 C112 94, 94 94, 86 88 Z" fill="url(#patronus-body-grad)"/>
-            <path d="M88 86 C82 110, 72 135, 76 165 C84 185, 122 185, 130 165 C134 135, 124 110, 118 86 Z" fill="url(#patronus-body-grad)"/>
-            <!-- Ethereal Misty Legs Fading Into Fog -->
-            <path d="M84 168 L78 235 M98 172 L96 242 M114 172 L116 240 M126 168 L134 232" stroke="url(#patronus-leg-grad)" stroke-width="6" stroke-linecap="round"/>
-            <defs>
-                <linearGradient id="patronus-body-grad" x1="100" y1="60" x2="100" y2="190" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#f0f9ff" stop-opacity="0.9"/>
-                    <stop offset="60%" stop-color="#7dd3fc" stop-opacity="0.55"/>
-                    <stop offset="100%" stop-color="#0284c7" stop-opacity="0.1"/>
-                </linearGradient>
-                <linearGradient id="patronus-leg-grad" x1="100" y1="168" x2="100" y2="245" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.5"/>
-                    <stop offset="100%" stop-color="#0284c7" stop-opacity="0"/>
-                </linearGradient>
-            </defs>
-        </svg>
-    </div>
-
-    <!-- Wall-Mounted Ornate Brass Candelabra Sconces -->
-    <div class="sconces-wrapper">
-        <!-- Left Wall Sconce -->
-        <div class="wall-sconce left-sconce">
-            <div class="sconce-candle sc-back"><div class="wick"></div><div class="flame"></div></div>
-            <div class="sconce-candle sc-main"><div class="wick"></div><div class="flame"></div></div>
-            <div class="sconce-candle sc-inner"><div class="wick"></div><div class="flame"></div></div>
-            <svg class="sconce-metalwork" viewBox="0 0 165 310"><use href="#ornate-sconce-bracket"/></svg>
-        </div>
-
-        <!-- Right Wall Sconce -->
-        <div class="wall-sconce right-sconce">
-            <div class="sconce-candle sc-back"><div class="wick"></div><div class="flame"></div></div>
-            <div class="sconce-candle sc-main"><div class="wick"></div><div class="flame"></div></div>
-            <div class="sconce-candle sc-inner"><div class="wick"></div><div class="flame"></div></div>
-            <svg class="sconce-metalwork" viewBox="0 0 165 310"><use href="#ornate-sconce-bracket"/></svg>
-        </div>
-    </div>
 
     <!-- Floating Centered Title -->
     <header class="floating-hero-title">
@@ -906,7 +687,7 @@
                 <button class="logout-btn" onclick="logout()">Log Out</button>
             </div>
 
-            <!-- My Wish List Section (Unified Dark-Slate Torn Scroll) -->
+            <!-- My Wish List Section -->
             <div class="wishlist-view" id="myListView">
                 <h3 class="section-title">
                     <span class="magic-icon icon-md"><svg viewBox="0 0 64 64"><use href="#icon-sparkles"/></svg></span>
@@ -917,7 +698,7 @@
                 <ul class="item-list" id="myItemsList"></ul>
             </div>
 
-            <!-- Separate Torn Dark-Slate Card for Adding a New Item (Matches Mockup!) -->
+            <!-- Separate Torn Dark-Slate Card for Adding a New Item -->
             <div class="add-item-box">
                 <h4>Add a New Item to Your List</h4>
                 <div class="inline-inputs">
@@ -948,7 +729,6 @@
                 <p style="font-weight: 600; color: var(--accent-gold); margin-top: 1rem;">Official Wish List Items:</p>
                 <ul class="item-list" id="detailItemsList"></ul>
 
-                <!-- EXTRA GIFTS NOT ON THE LIST SECTION -->
                 <div style="margin-top: 2.5rem;">
                     <h3 class="section-title">
                         <span class="magic-icon icon-md"><svg viewBox="0 0 64 64"><use href="#icon-pouch"/></svg></span>
@@ -980,7 +760,7 @@
 
         function createFireflies() {
             const container = document.getElementById('firefliesContainer');
-            for (let i = 0; i < 38; i++) {
+            for (let i = 0; i < 35; i++) {
                 const spark = document.createElement('div');
                 spark.className = 'firefly';
                 const size = Math.random() * 4 + 2;

@@ -929,7 +929,43 @@ main,
     }
 }
 
+/* iPhone / mobile Safari fallback:
+   prevent torn-edge filter from painting weird background blocks */
+@media (max-width: 600px) {
 
+    .login-card,
+    .dashboard-header,
+    .wishlist-view,
+    .profile-card,
+    .add-item-box {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+    }
+
+    .login-card::before,
+    .dashboard-header::before,
+    .wishlist-view::before,
+    .profile-card::before,
+    .add-item-box::before {
+        filter: none !important;
+        -webkit-filter: none !important;
+        transform: none !important;
+    }
+
+    #dashboardScreen,
+    #detailScreen {
+        position: relative;
+        z-index: 5;
+    }
+
+    .back-btn {
+        position: relative;
+        z-index: 6;
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+}
 
     </style>
 </head>

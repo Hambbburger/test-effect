@@ -24,9 +24,9 @@
         body {
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(circle at 50% 52%, rgba(245, 158, 11, 0.22) 0%, transparent 45%),
-                radial-gradient(circle at 85% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 35%),
-                linear-gradient(rgba(7, 10, 20, 0.5), rgba(7, 10, 20, 0.82)), 
+                radial-gradient(circle at 50% 18%, rgba(251, 191, 36, 0.28) 0%, transparent 40%),
+                radial-gradient(circle at 50% 55%, rgba(245, 158, 11, 0.2) 0%, transparent 50%),
+                linear-gradient(rgba(7, 10, 20, 0.45), rgba(7, 10, 20, 0.85)), 
                 url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -54,7 +54,7 @@
             height: 100%;
         }
 
-        .icon-lg { width: 32px; height: 32px; }
+        .icon-lg { width: 34px; height: 34px; }
         .icon-md { width: 26px; height: 26px; }
         .icon-sm { width: 20px; height: 20px; }
         .icon-xs { width: 16px; height: 16px; }
@@ -98,25 +98,335 @@
             100% { transform: translateY(-90px) translateX(25px) scale(1.1); opacity: 0; }
         }
 
-
-/* Translucent Midnight-Blue Glass Header */
-        header {
-            background: linear-gradient(180deg, rgba(13, 19, 34, 0.65) 0%, rgba(20, 29, 49, 0.55) 100%) !important;
-            backdrop-filter: blur(12px) !important;
-            -webkit-backdrop-filter: blur(12px) !important;
-            border-bottom: 2px solid rgba(217, 119, 6, 0.8);
-            padding: 1.1rem 2.8rem;
+        /* ================= FLOATING CENTERED TITLE (NO BAR!) ================= */
+        header.floating-hero-title {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            padding: 2.2rem 1.5rem 0.5rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            box-shadow: 
-                0 8px 30px rgba(0, 0, 0, 0.6),
-                0 1px 15px rgba(245, 158, 11, 0.25);
+            justify-content: center;
+            text-align: center;
             position: relative;
             z-index: 10;
         }
 
-        /* Magical Wizarding Font for All Inputs and Dropdowns */
+        .brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.15rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .brand-icon {
+            width: 54px;
+            height: 54px;
+            background: radial-gradient(circle at 30% 30%, #dc2626, #7f1d1d);
+            padding: 0.5rem;
+            border-radius: 14px;
+            border: 2px solid #fbbf24;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 25px rgba(220, 38, 38, 0.75), inset 0 0 10px rgba(0, 0, 0, 0.6);
+        }
+
+        header.floating-hero-title h1 {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 3.4rem;
+            color: #fde047;
+            letter-spacing: 2px;
+            text-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.95),
+                0 0 18px rgba(253, 224, 71, 0.85), 
+                0 0 38px rgba(217, 119, 6, 0.65);
+        }
+
+        header.floating-hero-title p {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 1.25rem;
+            color: #fef08a;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95), 0 0 10px rgba(245, 158, 11, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        header.floating-hero-title p::before,
+        header.floating-hero-title p::after {
+            content: "── ✦ ──";
+            color: #f59e0b;
+            font-family: sans-serif;
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        /* ================= PATRONUS STAG ANCHORED ON THE WISHLIST / LOGIN BOX ================= */
+        .box-patronus-guardian {
+            position: absolute;
+            top: -26px;
+            right: 22px;
+            width: 72px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, rgba(186, 230, 253, 0.45) 0%, rgba(56, 189, 248, 0.18) 50%, transparent 72%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 15;
+            animation: patronusPulse 4s ease-in-out infinite alternate;
+        }
+
+        .patronus-stag-icon {
+            font-size: 3.1rem;
+            filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(175deg) drop-shadow(0 0 10px #e0f2fe) drop-shadow(0 0 22px #38bdf8);
+            transform: scaleX(-1);
+        }
+
+        @keyframes patronusPulse {
+            0% { transform: translateY(2px) scale(0.97); opacity: 0.88; }
+            100% { transform: translateY(-5px) scale(1.05); opacity: 1; }
+        }
+
+        /* ================= BRASS CANDELABRA SCONCES WITH CLEAN TEARDROP FLAMES ================= */
+        .candle-cluster-container {
+            position: fixed;
+            width: 100%;
+            max-width: 1220px;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 230px;
+            pointer-events: none;
+            z-index: 3;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+        }
+
+        .candelabra-sconce {
+            position: relative;
+            display: flex;
+            gap: 14px;
+            align-items: flex-end;
+            padding-bottom: 28px;
+            animation: candleFloat 6s ease-in-out infinite alternate;
+        }
+
+        /* Ornate Antique Brass Bracket Base under the 3 candles */
+        .candelabra-sconce::after {
+            content: "";
+            position: absolute;
+            bottom: 6px;
+            left: -8px;
+            right: -8px;
+            height: 22px;
+            background: radial-gradient(ellipse at top, #fbbf24, #b45309 60%, #451a03 100%);
+            border-radius: 4px 4px 28px 28px;
+            border: 2px solid #fde68a;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9), 0 0 20px rgba(245, 158, 11, 0.35);
+        }
+
+        @keyframes candleFloat {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-10px); }
+        }
+
+        .beeswax-candle {
+            width: 20px;
+            background: linear-gradient(90deg, #fde68a 0%, #fffbeb 45%, #fef3c7 75%, #d97706 100%);
+            border-radius: 3px 3px 2px 2px;
+            position: relative;
+            box-shadow: 
+                0 0 15px rgba(251, 191, 36, 0.3),
+                inset 0 -8px 12px rgba(180, 83, 9, 0.35),
+                0 8px 16px rgba(0, 0, 0, 0.75);
+        }
+
+        .candle-tall { height: 95px; }
+        .candle-medium { height: 72px; }
+        .candle-short { height: 54px; }
+
+        .beeswax-candle::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -1px;
+            right: -1px;
+            height: 6px;
+            background: radial-gradient(ellipse at center, #fde68a 0%, #fffbeb 75%);
+            border-radius: 50%;
+        }
+
+        .wick {
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 6px;
+            background: #292524;
+        }
+
+        /* Clean, classic teardrop candle flame (like the first candelabra picture!) */
+        .flame {
+            position: absolute;
+            top: -26px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 22px;
+            background: radial-gradient(ellipse at 50% 78%, #ffffff 25%, #fef08a 55%, #f59e0b 85%, transparent 100%);
+            border-radius: 50% 50% 35% 35% / 65% 65% 35% 35%;
+            box-shadow: 
+                0 0 10px 2px rgba(254, 240, 138, 0.9),
+                0 0 22px 7px rgba(251, 191, 36, 0.6),
+                0 0 42px 14px rgba(245, 158, 11, 0.3);
+            animation: flicker 2.2s ease-in-out infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(0.96, 1.03) rotate(-1.5deg); }
+            50% { transform: translateX(-50%) scale(1.03, 0.97) rotate(1.5deg); }
+            100% { transform: translateX(-50%) scale(0.98, 1.02) rotate(-1deg); }
+        }
+
+        /* ================= MAIN CONTENT & JAGGED TORN PARCHMENT ================= */
+        main {
+            flex: 1;
+            max-width: 920px;
+            width: 100%;
+            margin: 1.5rem auto 3rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .login-card {
+            max-width: 500px;
+            margin: 2.5rem auto;
+            padding: 3.2rem 2.8rem;
+            text-align: center;
+            position: relative;
+            color: #271c12 !important;
+            z-index: 1;
+        }
+
+        .login-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-color: #cbb38b;
+            background-image: 
+                radial-gradient(circle at 50% 45%, rgba(245, 232, 204, 0.9) 15%, rgba(186, 152, 104, 0.94) 72%, rgba(102, 71, 36, 0.98) 100%),
+                url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop');
+            background-size: cover;
+            background-blend-mode: multiply;
+            border: 4px solid #78350f;
+            border-radius: 6px;
+            filter: url(#torn-parchment-edge) drop-shadow(0 0 28px rgba(245, 158, 11, 0.5)) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.95));
+            box-shadow: inset 0 0 45px rgba(67, 38, 12, 0.85);
+        }
+
+        .login-card h2 {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 3.1rem;
+            color: #451a03;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 1px 0 rgba(254, 240, 138, 0.8), 0 0 12px rgba(245, 158, 11, 0.5);
+        }
+
+        .login-card p.subtitle {
+            color: #3e2723 !important;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 0.92rem;
+        }
+
+        .login-card label {
+            color: #271c12;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        /* Warm Aged Parchment Top Banner for Logged-In User (Matches Mockup!) */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 1.8rem;
+            margin-bottom: 1.8rem;
+            position: relative;
+            color: #271c12 !important;
+            z-index: 1;
+        }
+
+        .dashboard-header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-color: #d6c3a5;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(245, 232, 204, 0.92) 20%, rgba(176, 140, 92, 0.96) 100%),
+                url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop');
+            background-size: cover;
+            background-blend-mode: multiply;
+            border: 3px solid #78350f;
+            border-radius: 8px;
+            filter: url(#torn-parchment-edge) drop-shadow(0 0 18px rgba(245, 158, 11, 0.4)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.9));
+            box-shadow: inset 0 0 30px rgba(67, 38, 12, 0.75);
+        }
+
+        .user-badge {
+            font-family: 'Mountains of Christmas', cursive;
+            font-weight: 700;
+            color: #271c12;
+            font-size: 1.65rem;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 0 rgba(254, 240, 138, 0.7);
+        }
+
+        /* Dark Chiseled Stone/Wood Panels for Wishlist & Items */
+        .wishlist-view, .profile-card, .item-card {
+            position: relative;
+            color: #f8fafc !important;
+            z-index: 1;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .wishlist-view::before, .profile-card::before, .item-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-color: #12131a;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(26, 29, 40, 0.9) 0%, rgba(10, 12, 18, 0.98) 100%),
+                url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop');
+            background-size: cover;
+            background-blend-mode: overlay;
+            border: 3px solid #d97706;
+            border-radius: 8px;
+            filter: url(#torn-parchment-edge) drop-shadow(0 0 18px rgba(245, 158, 11, 0.4)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.9));
+            box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.92);
+        }
+
+        .form-group {
+            margin: 1.2rem 0 1.6rem;
+            text-align: left;
+        }
+
+        /* Magical Wizarding Font for Inputs & Dropdowns */
         select, input {
             width: 100%;
             padding: 0.9rem 1.1rem;
@@ -139,285 +449,11 @@
             box-shadow: 0 0 18px rgba(251, 191, 36, 0.8), inset 0 4px 12px rgba(0, 0, 0, 0.95);
         }
 
-        /* Styling dropdown options to match */
         select option {
             background-color: #120d08;
             color: #fde047;
             font-family: 'Mountains of Christmas', cursive;
             font-size: 1.2rem;
-        }
-        header::after {
-            content: "";
-            position: absolute;
-            bottom: -2px;
-            left: 15%;
-            right: 15%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #fde047, transparent);
-            box-shadow: 0 0 12px #fde047;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 1.1rem;
-        }
-
-        .brand-icon {
-            width: 52px;
-            height: 52px;
-            background: radial-gradient(circle at 30% 30%, #dc2626, #7f1d1d);
-            padding: 0.5rem;
-            border-radius: 12px;
-            border: 2px solid #f59e0b;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(220, 38, 38, 0.7), inset 0 0 10px rgba(0, 0, 0, 0.6);
-        }
-
-        header h1 {
-            font-family: 'Mountains of Christmas', cursive;
-            font-size: 2.65rem;
-            color: #fde047;
-            letter-spacing: 1.2px;
-            text-shadow: 
-                0 2px 4px rgba(0, 0, 0, 0.9),
-                0 0 14px rgba(253, 224, 71, 0.65), 
-                0 0 28px rgba(217, 119, 6, 0.45);
-        }
-
-        header p {
-            font-size: 0.84rem;
-            color: #cbd5e1;
-            letter-spacing: 0.2px;
-        }
-
-        /* Ethereal Glowing Stag Patronus in Header */
-        .patronus-stag-badge {
-            position: relative;
-            width: 64px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle, rgba(186, 230, 253, 0.35) 0%, rgba(56, 189, 248, 0.15) 45%, transparent 70%);
-            border-radius: 50%;
-            animation: patronusPulse 4s ease-in-out infinite alternate;
-        }
-
-        .patronus-stag-icon {
-            font-size: 2.8rem;
-            filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(175deg) drop-shadow(0 0 8px #bae6fd) drop-shadow(0 0 18px #38bdf8);
-            transform: scaleX(-1);
-        }
-
-        @keyframes patronusPulse {
-            0% { transform: translateY(2px) scale(0.97); opacity: 0.82; }
-            100% { transform: translateY(-4px) scale(1.04); opacity: 1; }
-        }
-
-        /* ================= WARM GOLDEN BEESWAX CANDLES ================= */
-        .candle-holder {
-            position: fixed;
-            pointer-events: none;
-            z-index: 3;
-            animation: floatCandle 5.5s ease-in-out infinite alternate;
-        }
-
-        .c-1 { top: 185px; left: 9%; transform: scale(0.95); animation-delay: 0s; }
-        .c-2 { top: 290px; left: 5%; transform: scale(0.75); animation-delay: 1.4s; }
-        .c-3 { top: 260px; left: 14%; transform: scale(0.65); animation-delay: 2.7s; }
-        .c-4 { top: 200px; right: 9%; transform: scale(0.9); animation-delay: 0.8s; }
-        .c-5 { top: 320px; right: 5%; transform: scale(0.72); animation-delay: 2.1s; }
-
-        @keyframes floatCandle {
-            0% { transform: translateY(0px); }
-            100% { transform: translateY(-14px); }
-        }
-
-        .beeswax-candle {
-            width: 22px;
-            height: 82px;
-            background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 35%, #fde68a 80%, #d97706 100%);
-            border-radius: 4px 4px 3px 3px;
-            position: relative;
-            box-shadow: 
-                0 0 20px rgba(251, 191, 36, 0.35),
-                inset -3px 0 6px rgba(180, 83, 9, 0.35),
-                inset 3px 2px 6px rgba(255, 255, 255, 0.9),
-                0 12px 20px rgba(0, 0, 0, 0.6);
-        }
-
-        .beeswax-candle::before {
-            content: "";
-            position: absolute;
-            top: -3px;
-            left: -1px;
-            right: -1px;
-            height: 8px;
-            background: radial-gradient(ellipse at center, #fde68a 0%, #fffbeb 70%);
-            border-radius: 50%;
-            box-shadow: 0 2px 4px rgba(217, 119, 6, 0.3);
-        }
-
-        .beeswax-candle::after {
-            content: "";
-            position: absolute;
-            top: 3px;
-            left: 4px;
-            width: 4px;
-            height: 22px;
-            background: linear-gradient(180deg, #fffbeb, #fef3c7);
-            border-radius: 0 0 4px 4px;
-            box-shadow: 9px 6px 0 -0.5px #fef3c7;
-        }
-
-        .wick {
-            position: absolute;
-            top: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 6px;
-            background: #292524;
-        }
-
-        .flame {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 14px;
-            height: 24px;
-            background: radial-gradient(ellipse at 50% 80%, #ffffff 20%, #fef08a 50%, #f59e0b 85%, transparent 100%);
-            border-radius: 50% 50% 35% 35% / 65% 65% 35% 35%;
-            box-shadow: 
-                0 0 12px 3px rgba(254, 240, 138, 0.9),
-                0 0 28px 10px rgba(251, 191, 36, 0.65),
-                0 0 55px 20px rgba(245, 158, 11, 0.35);
-            animation: flicker 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes flicker {
-            0% { transform: translateX(-50%) scale(0.95, 1.03) rotate(-2deg); }
-            50% { transform: translateX(-50%) scale(1.04, 0.96) rotate(2deg); }
-            100% { transform: translateX(-50%) scale(0.98, 1.02) rotate(-1deg); }
-        }
-
-        /* ================= MAIN CONTENT & JAGGED TORN PARCHMENT ================= */
-        main {
-            flex: 1;
-            max-width: 980px;
-            width: 100%;
-            margin: 2.5rem auto;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 5;
-        }
-
-        .login-card {
-            max-width: 500px;
-            margin: 3.5rem auto;
-            padding: 3.2rem 2.8rem;
-            text-align: center;
-            position: relative;
-            color: #271c12 !important;
-            z-index: 1;
-        }
-
-        .login-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            background-color: #cbb38b;
-            background-image: 
-                radial-gradient(circle at 50% 45%, rgba(245, 232, 204, 0.88) 15%, rgba(186, 152, 104, 0.92) 72%, rgba(102, 71, 36, 0.98) 100%),
-                url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop');
-            background-size: cover;
-            background-blend-mode: multiply;
-            border: 4px solid #78350f;
-            border-radius: 6px;
-            filter: url(#torn-parchment-edge) drop-shadow(0 0 28px rgba(245, 158, 11, 0.5)) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.95));
-            box-shadow: inset 0 0 45px rgba(67, 38, 12, 0.85);
-        }
-
-        .login-card h2 {
-            font-family: 'Mountains of Christmas', cursive;
-            font-size: 3.1rem;
-            color: #d97706;
-            margin-bottom: 0.4rem;
-            text-shadow: 
-                0 2px 2px rgba(40, 20, 5, 0.85),
-                0 0 12px rgba(253, 224, 71, 0.9);
-        }
-
-        .login-card p.subtitle {
-            color: #3e2723 !important;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            font-size: 0.92rem;
-        }
-
-        .login-card label {
-            color: #271c12;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            display: block;
-            font-size: 0.95rem;
-        }
-
-        /* Dark Chiseled Stone/Wood Panels for Dashboard & Items */
-        .wishlist-view, .dashboard-header, .profile-card, .item-card {
-            position: relative;
-            color: #f8fafc !important;
-            z-index: 1;
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-        }
-
-        .wishlist-view::before, .dashboard-header::before, .profile-card::before, .item-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            background-color: #161822;
-            background-image: 
-                radial-gradient(circle at 50% 50%, rgba(30, 35, 48, 0.88) 0%, rgba(12, 14, 20, 0.97) 100%),
-                url('https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop');
-            background-size: cover;
-            background-blend-mode: overlay;
-            border: 3px solid #d97706;
-            border-radius: 8px;
-            filter: url(#torn-parchment-edge) drop-shadow(0 0 18px rgba(245, 158, 11, 0.4)) drop-shadow(0 8px 20px rgba(0, 0, 0, 0.9));
-            box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.92);
-        }
-
-        .form-group {
-            margin: 1.2rem 0 1.6rem;
-            text-align: left;
-        }
-
-        select, input {
-            width: 100%;
-            padding: 0.9rem 1.1rem;
-            background: linear-gradient(180deg, #11131a 0%, #1e222d 100%) !important;
-            border: 2px solid #574128 !important;
-            border-radius: 8px !important;
-            color: #f8fafc !important;
-            font-size: 0.98rem;
-            outline: none;
-            box-shadow: 
-                inset 0 4px 12px rgba(0, 0, 0, 0.95),
-                0 2px 6px rgba(255, 255, 255, 0.15);
-            filter: url(#subtle-rough-edge);
-        }
-
-        select:focus, input:focus {
-            border-color: #fbbf24 !important;
-            box-shadow: 0 0 15px rgba(251, 191, 36, 0.75), inset 0 4px 12px rgba(0, 0, 0, 0.95);
         }
 
         /* ================= CARVED WOODEN & FIERY GOLD BUTTONS ================= */
@@ -472,21 +508,6 @@
         }
 
         /* ================= DASHBOARD & WAND BULLET LISTS ================= */
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 1.8rem;
-            margin-bottom: 2rem;
-        }
-
-        .user-badge {
-            font-weight: bold;
-            color: var(--accent-gold);
-            font-size: 1.2rem;
-            text-shadow: 0 0 10px rgba(253, 224, 71, 0.6);
-        }
-
         .section-title {
             font-family: 'Mountains of Christmas', cursive;
             font-size: 2.2rem;
@@ -615,12 +636,18 @@
             gap: 0.75rem;
         }
 
+        @media(max-width: 1100px) {
+            .candle-cluster-container {
+                display: none;
+            }
+        }
+
         @media(max-width: 768px) {
             .inline-inputs {
                 grid-template-columns: 1fr;
             }
-            .candle-holder {
-                display: none;
+            header.floating-hero-title h1 {
+                font-size: 2.5rem;
             }
         }
 
@@ -634,7 +661,6 @@
     <!-- Hidden SVG Filters & Reusable Magical Icon Definitions -->
     <svg width="0" height="0" style="position: absolute; pointer-events: none;">
         <defs>
-            <!-- Torn Parchment Filter -->
             <filter id="torn-parchment-edge" x="-5%" y="-5%" width="110%" height="110%">
                 <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="4" result="noise" />
                 <feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G" />
@@ -644,7 +670,6 @@
                 <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
             </filter>
 
-            <!-- Golden Magical Gradients for Icons -->
             <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#fef08a" />
                 <stop offset="50%" stop-color="#fbbf24" />
@@ -660,7 +685,6 @@
                 <stop offset="100%" stop-color="#064e3b" />
             </linearGradient>
 
-            <!-- 1. Enchanted Holiday Tree Icon -->
             <g id="icon-tree">
                 <polygon points="32,10 14,50 50,50" fill="url(#emerald-grad)" stroke="url(#gold-grad)" stroke-width="2.5" stroke-linejoin="round"/>
                 <polygon points="32,18 18,40 46,40" fill="url(#emerald-grad)" stroke="url(#gold-grad)" stroke-width="2" stroke-linejoin="round"/>
@@ -672,7 +696,6 @@
                 <circle cx="23" cy="45" r="2" fill="#fde047" />
             </g>
 
-            <!-- 2. Ornate Wizarding Gift Box Icon -->
             <g id="icon-gift">
                 <rect x="10" y="26" width="44" height="30" rx="3" fill="url(#ruby-grad)" stroke="url(#gold-grad)" stroke-width="3"/>
                 <rect x="7" y="18" width="50" height="10" rx="2" fill="url(#ruby-grad)" stroke="url(#gold-grad)" stroke-width="3"/>
@@ -682,25 +705,21 @@
                 <path d="M32 18 C42 6, 52 12, 40 18 C36 18, 34 18, 32 18 Z" fill="none" stroke="url(#gold-grad)" stroke-width="3.5" stroke-linecap="round"/>
             </g>
 
-            <!-- 3. 3D Golden Sparkles Icon -->
             <g id="icon-sparkles">
                 <path d="M32 4 Q34 24 52 26 Q34 28 32 48 Q30 28 12 26 Q30 24 32 4 Z" fill="url(#gold-grad)"/>
                 <path d="M50 38 Q51 47 60 48 Q51 49 50 58 Q49 49 40 48 Q49 47 50 38 Z" fill="#fef08a"/>
                 <path d="M16 42 Q17 48 23 49 Q17 50 16 56 Q15 50 9 49 Q15 48 16 42 Z" fill="#fef08a"/>
             </g>
 
-            <!-- 4. Glowing Diagonal Magic Wand Icon -->
             <g id="icon-wand">
                 <line x1="10" y1="54" x2="42" y2="22" stroke="#78350f" stroke-width="6" stroke-linecap="round"/>
                 <line x1="12" y1="52" x2="43" y2="21" stroke="url(#gold-grad)" stroke-width="2.5" stroke-linecap="round"/>
-                <!-- Spell Starburst at Wand Tip -->
                 <path d="M48 6 Q49 15 58 16 Q49 17 48 26 Q47 17 38 16 Q47 15 48 6 Z" fill="#fef08a"/>
                 <circle cx="48" cy="16" r="4" fill="#ffffff"/>
                 <circle cx="35" cy="10" r="2" fill="#fde047"/>
                 <circle cx="56" cy="28" r="2" fill="#fde047"/>
             </g>
 
-            <!-- 5. Magical Velvet Surprise Pouch / Potion Bag Icon -->
             <g id="icon-pouch">
                 <path d="M22 22 C12 28, 10 46, 18 54 C24 59, 40 59, 46 54 C54 46, 52 28, 42 22 Z" fill="url(#ruby-grad)" stroke="url(#gold-grad)" stroke-width="3" stroke-linejoin="round"/>
                 <path d="M22 22 L16 10 L26 14 L32 8 L38 14 L48 10 L42 22 Z" fill="url(#gold-grad)" stroke="#78350f" stroke-width="1.5" stroke-linejoin="round"/>
@@ -708,7 +727,6 @@
                 <path d="M32 31 Q33 38 40 39 Q33 40 32 47 Q31 40 24 39 Q31 38 32 31 Z" fill="#fef08a"/>
             </g>
 
-            <!-- 6. Wizarding Hat Crest (For Family Member Profiles) -->
             <g id="icon-wizard-hat">
                 <ellipse cx="32" cy="48" rx="24" ry="7" fill="#1e1b4b" stroke="url(#gold-grad)" stroke-width="3"/>
                 <path d="M18 46 L26 16 C28 10, 38 6, 46 10 C40 16, 38 22, 46 46 Z" fill="#1e1b4b" stroke="url(#gold-grad)" stroke-width="3" stroke-linejoin="round"/>
@@ -717,13 +735,11 @@
                 <path d="M38 20 Q39 24 43 25 Q39 26 38 30 Q37 26 33 25 Q37 24 38 20 Z" fill="#fef08a"/>
             </g>
 
-            <!-- 7. Enchanted Golden Link Icon -->
             <g id="icon-link">
                 <path d="M26 38 L18 46 C13 51, 6 44, 11 39 L21 29 C26 24, 33 29, 30 34" fill="none" stroke="url(#gold-grad)" stroke-width="5" stroke-linecap="round"/>
                 <path d="M38 26 L46 18 C51 13, 58 20, 53 25 L43 35 C38 40, 31 35, 34 30" fill="none" stroke="url(#gold-grad)" stroke-width="5" stroke-linecap="round"/>
             </g>
 
-            <!-- 8. Antique Brass Padlock Icon -->
             <g id="icon-lock">
                 <rect x="14" y="28" width="36" height="28" rx="5" fill="url(#gold-grad)" stroke="#78350f" stroke-width="2.5"/>
                 <path d="M22 28 V18 C22 11, 42 11, 42 18 V28" fill="none" stroke="url(#gold-grad)" stroke-width="5" stroke-linecap="round"/>
@@ -736,34 +752,37 @@
     <!-- Organic Randomized Floating Fireflies -->
     <div class="fireflies" id="firefliesContainer"></div>
 
-    <!-- Pretty Warm Ivory Beeswax Candles with Melted Drips -->
-    <div class="candle-holder c-1"><div class="beeswax-candle"><div class="wick"></div><div class="flame"></div></div></div>
-    <div class="candle-holder c-2"><div class="beeswax-candle"><div class="wick"></div><div class="flame"></div></div></div>
-    <div class="candle-holder c-3"><div class="beeswax-candle"><div class="wick"></div><div class="flame"></div></div></div>
-    <div class="candle-holder c-4"><div class="beeswax-candle"><div class="wick"></div><div class="flame"></div></div></div>
-    <div class="candle-holder c-5"><div class="beeswax-candle"><div class="wick"></div><div class="flame"></div></div></div>
+    <!-- Wall-Mounted Brass Candelabra Sconces Framing Content -->
+    <div class="candle-cluster-container">
+        <div class="candelabra-sconce">
+            <div class="beeswax-candle candle-medium"><div class="wick"></div><div class="flame"></div></div>
+            <div class="beeswax-candle candle-tall"><div class="wick"></div><div class="flame"></div></div>
+            <div class="beeswax-candle candle-short"><div class="wick"></div><div class="flame"></div></div>
+        </div>
+        <div class="candelabra-sconce">
+            <div class="beeswax-candle candle-short"><div class="wick"></div><div class="flame"></div></div>
+            <div class="beeswax-candle candle-tall"><div class="wick"></div><div class="flame"></div></div>
+            <div class="beeswax-candle candle-medium"><div class="wick"></div><div class="flame"></div></div>
+        </div>
+    </div>
 
-    <!-- Clean Midnight-Blue & Gold Header -->
-    <header>
+    <!-- Floating Centered Title (No Top Bar Box!) -->
+    <header class="floating-hero-title">
         <div class="brand">
             <div class="brand-icon">
                 <span class="magic-icon icon-lg"><svg viewBox="0 0 64 64"><use href="#icon-tree"/></svg></span>
             </div>
-            <div>
-                <h1>Family Holiday Wishlist</h1>
-                <p>JSON-Backed & Secret Santa Safe</p>
-            </div>
+            <h1>Family Holiday Wishlist</h1>
         </div>
-
-        <!-- Glowing Icy-Blue Stag Patronus Silhouette -->
-        <div class="patronus-stag-badge" title="Expecto Patronum!">
-            <span class="patronus-stag-icon">🦌</span>
-        </div>
+        <p>JSON-Backed & Secret Santa Safe</p>
     </header>
 
     <main>
-        <!-- LOGIN SCREEN WITH TORN WEATHERED PARCHMENT -->
+        <!-- LOGIN SCREEN WITH TORN WEATHERED PARCHMENT & PATRONUS GUARDIAN -->
         <section id="loginScreen" class="login-card">
+            <div class="box-patronus-guardian" title="Expecto Patronum!">
+                <span class="patronus-stag-icon">🦌</span>
+            </div>
             <h2>Welcome Family!</h2>
             <p class="subtitle">Select your name from the list below to enter.</p>
             <div class="form-group">
@@ -779,14 +798,17 @@
         <section id="dashboardScreen" class="hidden">
             <div class="dashboard-header">
                 <div>
-                    <span style="font-size: 0.8rem; color: #cbd5e1; display: block;">Logged in as:</span>
+                    <span style="font-size: 0.82rem; color: #451a03; font-weight: 600; display: block;">Logged in as:</span>
                     <span class="user-badge" id="currentUserName"></span>
                 </div>
                 <button class="logout-btn" onclick="logout()">Log Out</button>
             </div>
 
-            <!-- My Wish List Section -->
+            <!-- My Wish List Section (With Patronus Stag Perched on the Wishlist Box!) -->
             <div class="wishlist-view" id="myListView">
+                <div class="box-patronus-guardian" title="Expecto Patronum!">
+                    <span class="patronus-stag-icon">🦌</span>
+                </div>
                 <h3 class="section-title">
                     <span class="magic-icon icon-md"><svg viewBox="0 0 64 64"><use href="#icon-sparkles"/></svg></span>
                     My Christmas Wish List
@@ -822,6 +844,9 @@
         <section id="detailScreen" class="hidden">
             <button class="back-btn" onclick="showDashboard()">← Back to Family Lists</button>
             <div class="wishlist-view">
+                <div class="box-patronus-guardian" title="Expecto Patronum!">
+                    <span class="patronus-stag-icon">🦌</span>
+                </div>
                 <h3 class="section-title" id="detailMemberTitle"></h3>
                 
                 <p style="font-weight: 600; color: var(--accent-gold); margin-top: 1rem;">Official Wish List Items:</p>
@@ -853,12 +878,10 @@
     </main>
 
     <script>
-        // Helper to inject glowing SVG icons anywhere in JS templates
         function svgIcon(id, sizeClass = 'icon-sm') {
             return `<span class="magic-icon ${sizeClass}"><svg viewBox="0 0 64 64"><use href="#${id}"/></svg></span>`;
         }
 
-        // Create 35 organic, randomized floating golden firefly sparks
         function createFireflies() {
             const container = document.getElementById('firefliesContainer');
             for (let i = 0; i < 35; i++) {
@@ -876,7 +899,6 @@
         }
         createFireflies();
 
-        // LOCAL MOCK DATA (Zero Cloud API Calls Required)
         let familyData = {
             members: [
                 {
